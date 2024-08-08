@@ -22,13 +22,13 @@
                 @enderror
 
                 <div>
-                    <div class="flex items-center">
-                        <label for="email" class="label w-32">{{ __("Email") }}:</label>
+                    <div class="form-group">
+                        <label for="email" class="dark-label w-32">{{ __("Email") }}:</label>
                         <input
                             type="email"
                             name="email"
                             id="email"
-                            class="input"
+                            class="dark-input"
                             placeholder="{{ __("Email address") }}"
                         >
                     </div>
@@ -40,13 +40,13 @@
                 </div>
 
                 <div>
-                    <div class="flex items-center">
-                        <label for="password" class="label w-32">{{ __("Password") }}:</label>
+                    <div class="form-group">
+                        <label for="password" class="dark-label w-32">{{ __("Password") }}:</label>
                         <input
                             type="password"
                             name="password"
                             id="password"
-                            class="input"
+                            class="dark-input"
                             placeholder="{{ __("Password") }}"
                         >
                     </div>

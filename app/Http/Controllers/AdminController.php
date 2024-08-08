@@ -15,17 +15,4 @@ class AdminController extends Controller
         );
         return view("admin.dashboard");
     }
-
-    public function users(Request $request) {
-        Gate::allowIf(
-            $request->user() &&
-            $request->user()->role === "admin"
-        );
-        return view("admin.users", [
-            "users" => User::query()
-                ->orderBy("role")
-                ->orderBy("id")
-                ->paginate(10)
-        ]);
-    }
 }

@@ -2,6 +2,34 @@
 
 @section("content")
     <x-admin.container :title="__('Users')">
+        <form class="mb-8" id="search-form">
+            <h2 class="text-2xl mb-2">{{ __("Search") }}:</h2>
+
+            <div class="form-group mb-2">
+                <label for="search_name" class="label w-16">{{ __("Name") }}:</label>
+                <input
+                    type="text" name="search_name" id="search_name" class="input"
+                    placeholder="{{ __("Search by name") }}"
+                    value="{{ request()->search_name }}"
+                >
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="search_email" class="label w-16">{{ __("Email") }}:</label>
+                <input
+                    type="text" name="search_email" id="search_email" class="input"
+                    placeholder="{{ __("Search by email") }}"
+                    value="{{ request()->search_email }}"
+                >
+            </div>
+
+            <div class="flex gap-2">
+                <button type="submit" class="btn">
+                    {{ __("Search") }}
+                </button>
+            </div>
+        </form>
+
         @if ($users->count() === 0)
             <p class="text-center text-zinc-600 text-lg">
                 {{ __("No users found.") }}

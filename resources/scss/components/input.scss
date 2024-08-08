@@ -1,12 +1,23 @@
-.input {
+@mixin input {
     @apply
-        p-2 rounded-md shadow-rose-950 shadow-md
-        border border-white bg-rose-900 text-white
-        focus:scale-105 focus:shadow-rose-950 focus:shadow-lg
-        hover:shadow-rose-950 hover:shadow-lg
+        p-2 rounded-md shadow-md
+        border
+        focus:scale-105  focus:shadow-lg
+         hover:shadow-lg
         outline-0 transition-all;
 
     &::placeholder {
-        @apply text-zinc-500;
+        @apply text-gray-400;
     }
+}
+
+.input {
+    @include input;
+}
+
+.dark-input {
+    @include input;
+    @apply
+        shadow-rose-950 border-white bg-rose-900 text-white
+        focus:shadow-rose-950 hover:shadow-rose-950;
 }

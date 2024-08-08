@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
@@ -17,6 +18,13 @@ Route::get("/logout", [AuthController::class, "logout"])
 Route::prefix("/admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, "dashboard"])
         ->name("admin.dashboard");
-    Route::get("/users", [AdminController::class, "users"])
-        ->name("admin.users");
+
+    Route::resource("users", UserController::class)->names([
+        "index" => "admin.users.index",
+        "create" => "admin.users.create",
+        "store" => "admin.users.store",
+        "edit" => "admin.users.edit",
+        "update" => "admin.users.update",
+        "destroy" => "admin.users.destroy",
+    ]);
 });

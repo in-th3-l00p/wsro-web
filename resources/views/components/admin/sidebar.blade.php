@@ -19,7 +19,7 @@
     </x-ui.sidebar-link>
 
     <x-ui.sidebar-link
-        route="admin.users"
+        route="admin.users.index"
         icon="fa-user"
     >
         {{ __("Users") }}

@@ -5,20 +5,35 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function index(Request $request) {
+        $request->validate([
+            "search_name" => "nullable|max:255",
+            "search_email" => "nullable|max:255",
+        ]);
+
+        $users = User::query()
+            ->orderBy("role")
+            ->orderBy("id");
+
+        if ($request->search_name)
+            $users->where("name", "like", "%" . $request->search_name . "%");
+        if ($request->search_email)
+            $users->where("email", "like", "%" . $request->search_email . "%");
+
+
+        Gate::allowIf(
+            $request->user() &&
+            $request->user()->role === "admin"
+        );
+        return view("admin.users", [
+            "users" => $users->paginate(10)
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
