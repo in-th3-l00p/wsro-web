@@ -5,7 +5,7 @@
         <form
             action="{{ route("login.submit") }}"
             method="post"
-            class="card flex flex-col items-center gap-12"
+            class="card animate-fadein flex flex-col items-center gap-12"
         >
             @csrf
 

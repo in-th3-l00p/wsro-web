@@ -2,10 +2,4 @@
     @apply
         p-16 rounded-md bg-rose-800 shadow-rose-950 shadow-md;
 
-    animation: fade-in 1s ease-in-out;
-}
-
-@keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }

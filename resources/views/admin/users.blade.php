@@ -9,7 +9,10 @@
         @endif
 
         @if ($users->count() > 0)
-            <div class="max-w-fit">
+            <div @class([
+                "max-w-fit",
+                "animate-fadein" => !request()->has("page")
+            ])>
                 <table class="table mb-4">
                     <thead>
                         <tr>
