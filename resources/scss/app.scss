@@ -1,0 +1,15 @@
+/* tailwind */
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+/* font awesome */
+@import './fontawesome/css/all.css';
+
+/* tailwind components */
+@import "components/button";
+@import "components/input";
+@import "components/card";
+@import "components/label";
+@import "components/alert";
+@import "components/sidebar";

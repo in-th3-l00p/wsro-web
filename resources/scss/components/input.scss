@@ -1,0 +1,12 @@
+.input {
+    @apply
+        p-2 rounded-md shadow-rose-950 shadow-md
+        border border-white bg-rose-900 text-white
+        focus:scale-105 focus:shadow-rose-950 focus:shadow-lg
+        hover:shadow-rose-950 hover:shadow-lg
+        outline-0 transition-all;
+
+    &::placeholder {
+        @apply text-zinc-500;
+    }
+}

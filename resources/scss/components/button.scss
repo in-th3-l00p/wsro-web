@@ -1,0 +1,8 @@
+.btn {
+    @apply
+        flex gap-4 items-center justify-center text-lg
+        px-8 py-2 bg-rose-600 rounded-md text-white
+        shadow-rose-950 shadow-md
+        hover:scale-105 hover:shadow-rose-950 hover:shadow-lg
+        transition-all;
+}
