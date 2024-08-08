@@ -24,7 +24,8 @@ class AdminController extends Controller
         return view("admin.users", [
             "users" => User::query()
                 ->orderBy("role")
-                ->paginate(10)
+                ->orderBy("id")
+                ->cursorPaginate(10)
         ]);
     }
 }
