@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container title="Users">
+    <x-admin.container :title="__('Users')">
         @if ($users->count() === 0)
             <p class="text-center text-zinc-600 text-lg">
                 {{ __("No users found.") }}
@@ -12,11 +12,11 @@
             <table class="table mb-4">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Created at</th>
-                        <th>Updated at</th>
-                        <th>Role</th>
+                        <th>{{ __("Name") }}</th>
+                        <th>{{ __("Email") }}</th>
+                        <th>{{ __(" Created at") }}</th>
+                        <th>{{ __(" Updated at") }}</th>
+                        <th>{{ __(" Role") }}</th>
                     </tr>
                 </thead>
                 <tbody>

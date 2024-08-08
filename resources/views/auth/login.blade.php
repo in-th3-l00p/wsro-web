@@ -23,13 +23,13 @@
             <div class="flex flex-col gap-6">
                 <div>
                     <div class="flex items-center">
-                        <label for="email" class="label w-32">Email:</label>
+                        <label for="email" class="label w-32">{{ __("Email") }}:</label>
                         <input
                             type="email"
                             name="email"
                             id="email"
                             class="input"
-                            placeholder="Email address"
+                            placeholder="{{ __("Email address") }}"
                         >
                     </div>
                     @error("email")
@@ -41,13 +41,13 @@
 
                 <div>
                     <div class="flex items-center">
-                        <label for="password" class="label w-32">Password:</label>
+                        <label for="password" class="label w-32">{{ __("Password") }}:</label>
                         <input
                             type="password"
                             name="password"
                             id="password"
                             class="input"
-                            placeholder="Password"
+                            placeholder="{{ __("Password") }}"
                         >
                     </div>
                     @error("password")
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn">{{ __("Login") }}</button>
         </form>
     </main>
 @endsection

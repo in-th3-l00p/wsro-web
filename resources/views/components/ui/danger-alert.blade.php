@@ -8,7 +8,7 @@
     </div>
     <button
         type="button"
-        title="Close"
+        title="{{ __("Close") }}"
         @click="open = false"
     >
         <i class="fa-solid fa-xmark fa-lg" style="color: #ef4444;"></i>

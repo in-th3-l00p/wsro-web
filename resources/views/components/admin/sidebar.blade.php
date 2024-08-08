@@ -15,13 +15,13 @@
         route="admin.dashboard"
         icon="fa-chart-line"
     >
-        Dashboard
+        {{ __("Dashboard") }}
     </x-ui.sidebar-link>
 
     <x-ui.sidebar-link
         route="admin.users"
         icon="fa-user"
     >
-        Users
+        {{ __("Users") }}
     </x-ui.sidebar-link>
 </x-ui.sidebar>

@@ -13,7 +13,10 @@
     <button
         @click="open = !open"
         type="button"
-        x-bind:title="open ? 'Close sidebar' : 'Open sidebar'"
+        x-bind:title="open ?
+            {{ "'" . __('Close sidebar') . "'" }} :
+            {{ '"' . __("Open sidebar") . '"' }}
+        "
         @class([
             "rounded-md p-4 m-2 w-12 h-12",
             "flex justify-center items-center",
