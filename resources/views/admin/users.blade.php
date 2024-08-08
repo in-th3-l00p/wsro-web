@@ -9,29 +9,31 @@
         @endif
 
         @if ($users->count() > 0)
-            <table class="table mb-4">
-                <thead>
-                    <tr>
-                        <th>{{ __("Name") }}</th>
-                        <th>{{ __("Email") }}</th>
-                        <th>{{ __(" Created at") }}</th>
-                        <th>{{ __(" Updated at") }}</th>
-                        <th>{{ __(" Role") }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($users as $user)
+            <div class="max-w-fit">
+                <table class="table mb-4">
+                    <thead>
                         <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->created_at }}</td>
-                            <td>{{ $user->updated_at }}</td>
-                            <td>{{ $user->role }}</td>
+                            <th>{{ __("Name") }}</th>
+                            <th>{{ __("Email") }}</th>
+                            <th>{{ __(" Created at") }}</th>
+                            <th>{{ __(" Updated at") }}</th>
+                            <th>{{ __(" Role") }}</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{ $users->links() }}
+                    </thead>
+                    <tbody>
+                        @foreach($users as $user)
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->created_at }}</td>
+                                <td>{{ $user->updated_at }}</td>
+                                <td>{{ $user->role }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {{ $users->links() }}
+            </div>
         @endif
     </x-admin.container>
 @endsection

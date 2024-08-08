@@ -14,13 +14,13 @@
                 class="w-32"
             >
 
-            @error("auth")
-                <x-ui.danger-alert>
-                    {{ $message }}
-                </x-ui.danger-alert>
-            @enderror
-
             <div class="flex flex-col gap-6">
+                @error("auth")
+                    <x-ui.danger-alert>
+                        {{ $message }}
+                    </x-ui.danger-alert>
+                @enderror
+
                 <div>
                     <div class="flex items-center">
                         <label for="email" class="label w-32">{{ __("Email") }}:</label>
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn">{{ __("Login") }}</button>
+            <button type="submit" class="btn btn-lg btn-shadow-dark">{{ __("Login") }}</button>
         </form>
     </main>
 @endsection
