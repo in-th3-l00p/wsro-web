@@ -17,3 +17,18 @@
 .btn-shadow-dark {
     @apply shadow-rose-950 hover:shadow-rose-950
 }
+
+@mixin nav-btn {
+    @apply w-8 h-8 p-0 rounded-none;
+}
+
+.nav-btn {
+    @include btn;
+    @include nav-btn;
+}
+
+.nav-btn-disabled {
+    @include btn;
+    @include nav-btn;
+    @apply hover:shadow-md hover:scale-100 bg-rose-700;
+}
