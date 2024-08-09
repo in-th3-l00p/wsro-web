@@ -6,10 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
     public function index(Request $request) {
+        Gate::allowIf(
+            $request->user() &&
+            $request->user()->role === "admin"
+        );
+
         $request->validate([
             "search_name" => "nullable|max:255",
             "search_email" => "nullable|max:255",
@@ -23,14 +29,15 @@ class UserController extends Controller
             $users->where("name", "like", "%" . $request->search_name . "%");
         if ($request->search_email)
             $users->where("email", "like", "%" . $request->search_email . "%");
+        if ($request->roles !== null) {
+            foreach ($request->roles as $role)
+                $users->orWhere("role", "=", $role);
+        }
 
-
-        Gate::allowIf(
-            $request->user() &&
-            $request->user()->role === "admin"
-        );
         return view("admin.users", [
-            "users" => $users->paginate(10)
+            "users" => $users
+                ->paginate(10)
+                ->withQueryString()
         ]);
     }
 
