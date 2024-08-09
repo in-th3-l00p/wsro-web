@@ -78,20 +78,34 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        //
+    public function edit(Request $request, User $user) {
+        Gate::allowIf(
+            $request->user() &&
+            $request->user()->role === "admin"
+        );
+        return view("admin.users.edit", [
+            "user" => $user
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
-    {
-        //
+    public function update(Request $request, User $user) {
+        Gate::allowIf(
+            $request->user() &&
+            $request->user()->role === "admin"
+        );
+        $data = $request->validate([
+            "name" => "required|max:255",
+            "email" => "required|email|max:255",
+            "role" => "required|in:user,admin"
+        ]);
+        if ($data["email"] !== $user->email)
+            $request->validate([
+                "email" => "unique:users,email"
+            ]);
+        $user->update($data);
+        return redirect()
+            ->route("admin.users.show", [ "user" => $user ])
+            ->with([ "success" => "User updated!" ]);
     }
 
     /**
