@@ -37,3 +37,10 @@
     @include btn;
     @apply w-8 h-8 p-0;
 }
+
+.disabled-icon-btn {
+    @include btn;
+    @apply
+        w-8 h-8 p-0
+        hover:shadow-md hover:scale-100 bg-rose-700;
+}

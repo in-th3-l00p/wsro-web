@@ -133,13 +133,7 @@
                                 >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a
-                                    title="{{ __("Delete user") }}"
-                                    href="{{ route("admin.users.destroy", [ "user" => $user ]) }}"
-                                    class="icon-btn"
-                                >
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+                                <x-admin.user.delete-button :user="$user" />
                             </td>
                         </tr>
                     @endforeach
