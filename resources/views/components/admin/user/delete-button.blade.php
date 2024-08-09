@@ -5,7 +5,7 @@
 @else
     <a
         title="{{ __("Delete user") }}"
-        href="{{ route("admin.users.destroy", [ "user" => $user ]) }}"
+        href="{{ route("admin.users.delete", [ "user" => $user ]) }}"
         class="icon-btn"
     >
         <i class="fa-solid fa-trash"></i>

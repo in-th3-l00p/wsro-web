@@ -126,6 +126,7 @@
                                 >
                                     <i class="fa-solid fa-user"></i>
                                 </a>
+
                                 <a
                                     title="{{ __("Edit user") }}"
                                     href="{{ route("admin.users.edit", [ "user" => $user ]) }}"
@@ -133,6 +134,7 @@
                                 >
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
+
                                 <x-admin.user.delete-button :user="$user" />
                             </td>
                         </tr>

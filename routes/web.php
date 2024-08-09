@@ -28,4 +28,6 @@ Route::prefix("/admin")->group(function () {
         "update" => "admin.users.update",
         "destroy" => "admin.users.destroy",
     ]);
+    Route::get("/users/delete/{user}", [UserController::class, "delete"])
+        ->name("admin.users.delete");
 });

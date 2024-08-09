@@ -113,11 +113,21 @@ class UserController extends Controller
             ->with([ "success" => "User updated!" ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        //
+    public function delete(Request $request, User $user) {
+        Gate::allowIf(
+            $request->user() &&
+            $request->user()->role === "admin"
+        );
+
+        return view("admin.users.delete", [
+            "user" => $user
+        ]);
+    }
+
+    public function destroy(User $user) {
+        $user->delete();
+        return redirect()->route("admin.users.index")->with([
+            "success" => "User deleted!"
+        ]);
     }
 }
