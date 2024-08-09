@@ -1,6 +1,9 @@
 <aside
     x-data="{ open: false }"
-    class="bg-rose-700 min-h-screen flex gap-2 shadow-rose-950 shadow-lg"
+    @class([
+        "sticky top-0 left-0 h-screen",
+        "bg-rose-700 flex gap-2 shadow-rose-950 shadow-lg"
+    ])
 >
     <nav
         x-show="open"

@@ -24,4 +24,26 @@
     >
         {{ __("Users") }}
     </x-ui.sidebar-link>
+
+    <div
+        x-data="{ open: false }"
+        class="mt-auto w-full"
+    >
+        <button
+            type="button"
+            class="sidebar-nav-link w-full"
+            @click="open = !open"
+        >
+            <i class="fa-solid fa-2xl fa-user text-white"></i>
+            <div>{{ request()->user()->name }}</div>
+        </button>
+        <nav x-show="open">
+            <x-ui.sidebar-link
+                route="logout"
+                icon="fa-right-from-bracket"
+            >
+                {{ __("Logout") }}
+            </x-ui.sidebar-link>
+        </nav>
+    </div>
 </x-ui.sidebar>
