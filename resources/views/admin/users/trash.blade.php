@@ -1,7 +1,13 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container :title="__('Deleted users')">
+    <x-admin.container
+        :title="__('Deleted users')"
+        :breadcrumbPath="[
+            [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
+            [ 'name' => __('Trash')],
+        ]"
+    >
         <div @class([
                 "max-w-fit",
                 "animate-fadein" => !request()->has("page")

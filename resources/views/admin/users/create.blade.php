@@ -1,7 +1,13 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container :title="__('Create user')">
+    <x-admin.container
+        :title="__('Create user')"
+        :breadcrumbPath="[
+            [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
+            [ 'name' => __('Create') ],
+        ]"
+    >
         <x-slot:subtitle>
             <h2 class="mt-2">{{ __("Complete the fields related to the user's data") }}</h2>
         </x-slot:subtitle>

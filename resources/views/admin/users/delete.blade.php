@@ -1,7 +1,13 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container :title="__('Delete user') . ' ' . $user->name">
+    <x-admin.container
+        :title="__('Delete user') . ' ' . $user->name"
+        :breadcrumbPath="[
+            [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
+            [ 'name' => __('Delete user') . ' ' . $user->name ],
+        ]"
+    >
         <x-slot:subtitle>
             <h2 class="mt-2">{{ __("Are you sure you want to delete user") }}: {{ $user->name }} ?</h2>
         </x-slot:subtitle>

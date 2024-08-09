@@ -1,7 +1,13 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container :title="__('User') . ' ' . $user->name">
+    <x-admin.container
+        :title="__('User') . ' ' . $user->name"
+        :breadcrumbPath="[
+            [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
+            [ 'name' => __('Profile of ') . ' ' . $user->name ],
+        ]"
+    >
         <x-slot:subtitle>
             <h2 class="mt-2">{{ __("User profile page") }}</h2>
         </x-slot:subtitle>

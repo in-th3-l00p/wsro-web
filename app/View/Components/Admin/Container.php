@@ -9,7 +9,8 @@ use Illuminate\View\Component;
 class Container extends Component
 {
     public function __construct(
-        public string $title
+        public string $title,
+        public ?array $breadcrumbPath = null
     ) { }
 
     public function render(): View|Closure|string {
