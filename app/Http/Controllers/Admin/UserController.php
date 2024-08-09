@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
@@ -35,29 +36,46 @@ class UserController extends Controller
                 $users->orWhere("role", "=", $request->roles[$i]);
         }
 
-        return view("admin.users", [
+        return view("admin.users.index", [
             "users" => $users
                 ->paginate(10)
                 ->withQueryString()
         ]);
     }
 
-    public function create()
-    {
-        //
+    public function create(Request $request) {
+        Gate::allowIf(
+            $request->user() &&
+            $request->user()->role === "admin"
+        );
+
+        return view("admin.users.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        Gate::allowIf(
+            $request->user() &&
+            $request->user()->role === "admin"
+        );
+        $request->validate([
+            "name" => "required|max:255",
+            "email" => "required|email|max:255|unique:users,email",
+            "password" => "required|min:8|max:255",
+            "role" => "required|in:user,admin"
+        ]);
+
+        $user = User::create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => Hash::make($request->password),
+            "role" => $request->role
+        ]);
+
+        return redirect()
+            ->route("admin.users.show", [ "user" => $user ])
+            ->with([ "success" => "User created!" ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(User $user)
     {
         //

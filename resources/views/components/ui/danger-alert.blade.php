@@ -1,7 +1,9 @@
 <div
     x-data="{ open: true }"
     x-bind:class="!open ? 'alert-close' : ''"
-    class="alert-danger mt-4"
+    {{ $attributes->merge([
+        "class" => "alert-danger mt-4"
+    ]) }}
 >
     <div>
         {{ $slot }}

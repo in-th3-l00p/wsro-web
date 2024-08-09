@@ -21,6 +21,7 @@ Route::prefix("/admin")->group(function () {
 
     Route::resource("users", UserController::class)->names([
         "index" => "admin.users.index",
+        "show" => "admin.users.show",
         "create" => "admin.users.create",
         "store" => "admin.users.store",
         "edit" => "admin.users.edit",

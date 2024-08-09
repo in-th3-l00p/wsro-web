@@ -16,7 +16,7 @@
 
             <div class="flex flex-col gap-6">
                 @error("auth")
-                    <x-ui.danger-alert>
+                    <x-ui.danger-alert class="!shadow-rose-950">
                         {{ $message }}
                     </x-ui.danger-alert>
                 @enderror
@@ -33,7 +33,7 @@
                         >
                     </div>
                     @error("email")
-                        <x-ui.danger-alert>
+                        <x-ui.danger-alert class="!shadow-rose-950">
                             {{ $message }}
                         </x-ui.danger-alert>
                     @enderror
@@ -51,7 +51,7 @@
                         >
                     </div>
                     @error("password")
-                        <x-ui.danger-alert>
+                        <x-ui.danger-alert class="!shadow-rose-950">
                             {{ $message }}
                         </x-ui.danger-alert>
                     @enderror

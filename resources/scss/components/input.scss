@@ -1,10 +1,8 @@
 @mixin input {
     @apply
-        p-2 rounded-md shadow-md
-        border
-        focus:scale-105  focus:shadow-lg
-         hover:shadow-lg
-        outline-0 transition-all;
+        w-full p-2 rounded-md shadow-md border
+        focus:scale-105 focus:shadow-lg
+        hover:shadow-lg outline-0 transition-all;
 
     &::placeholder {
         @apply text-gray-400;

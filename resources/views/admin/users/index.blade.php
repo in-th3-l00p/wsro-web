@@ -88,15 +88,26 @@
                 </button>
             </form>
 
+            <div class="w-full mb-4 flex items-center gap-4 flex-wrap">
+                <h2 class="text-2xl">{{ __("Create user") }}:</h2>
+                <a
+                    title="{{ __("Create user") }}"
+                    href="{{ route("admin.users.create") }}"
+                    class="icon-btn"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
             @if ($users->count() > 0)
                 <table class="table mb-4">
                     <thead>
                     <tr>
                         <th>{{ __("Name") }}</th>
                         <th>{{ __("Email") }}</th>
-                        <th>{{ __(" Created at") }}</th>
-                        <th>{{ __(" Updated at") }}</th>
-                        <th>{{ __(" Role") }}</th>
+                        <th>{{ __("Created at") }}</th>
+                        <th>{{ __("Updated at") }}</th>
+                        <th>{{ __("Role") }}</th>
+                        <th>{{ __("Operations") }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -107,6 +118,15 @@
                             <td>{{ $user->created_at }}</td>
                             <td>{{ $user->updated_at }}</td>
                             <td>{{ $user->role }}</td>
+                            <td class="flex items-center justify-center">
+                                <a
+                                    title="{{ __("Edit user") }}"
+                                    href="{{ route("admin.users.edit", [ "user" => $user ]) }}"
+                                    class="icon-btn"
+                                >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
