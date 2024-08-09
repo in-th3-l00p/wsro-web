@@ -118,13 +118,27 @@
                             <td>{{ $user->created_at }}</td>
                             <td>{{ $user->updated_at }}</td>
                             <td>{{ $user->role }}</td>
-                            <td class="flex items-center justify-center">
+                            <td class="flex gap-2 items-center justify-center">
+                                <a
+                                    title="{{ __("Show user") }}"
+                                    href="{{ route("admin.users.show", [ "user" => $user ]) }}"
+                                    class="icon-btn"
+                                >
+                                    <i class="fa-solid fa-user"></i>
+                                </a>
                                 <a
                                     title="{{ __("Edit user") }}"
                                     href="{{ route("admin.users.edit", [ "user" => $user ]) }}"
                                     class="icon-btn"
                                 >
                                     <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a
+                                    title="{{ __("Delete user") }}"
+                                    href="{{ route("admin.users.destroy", [ "user" => $user ]) }}"
+                                    class="icon-btn"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
                                 </a>
                             </td>
                         </tr>

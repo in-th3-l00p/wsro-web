@@ -73,9 +73,14 @@ class UserController extends Controller
             ->with([ "success" => "User created!" ]);
     }
 
-    public function show(User $user)
-    {
-        //
+    public function show(Request $request, User $user) {
+        Gate::allowIf(
+            $request->user() &&
+            $request->user()->role === "admin"
+        );
+        return view("admin.users.show", [
+            "user" => $user
+        ]);
     }
 
     public function edit(Request $request, User $user) {
