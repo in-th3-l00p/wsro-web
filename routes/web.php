@@ -19,6 +19,13 @@ Route::prefix("/admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, "dashboard"])
         ->name("admin.dashboard");
 
+    Route::get("/users/delete/{user}", [UserController::class, "delete"])
+        ->name("admin.users.delete");
+    Route::get("/users/trash", [UserController::class, "trash"])
+        ->name("admin.users.trash");
+    Route::put("/users/restore/{user}", [UserController::class, "restore"])
+        ->withTrashed()
+        ->name("admin.users.restore");
     Route::resource("users", UserController::class)->names([
         "index" => "admin.users.index",
         "show" => "admin.users.show",
@@ -28,6 +35,4 @@ Route::prefix("/admin")->group(function () {
         "update" => "admin.users.update",
         "destroy" => "admin.users.destroy",
     ]);
-    Route::get("/users/delete/{user}", [UserController::class, "delete"])
-        ->name("admin.users.delete");
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
@@ -11,28 +12,33 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
+    // filters the users query based on request parameters
+    private function filterUsers(Builder $query, Request $request) {
+        $request->validate([
+            "search_name" => "nullable|max:255",
+            "search_email" => "nullable|max:255",
+        ]);
+
+        $query
+            ->orderBy("role")
+            ->orderBy("id");
+
+        if ($request->search_name)
+            $query->where("name", "like", "%" . $request->search_name . "%");
+        if ($request->search_email)
+            $query->where("email", "like", "%" . $request->search_email . "%");
+        if ($request->roles !== null)
+            $query->whereIn("role", $request->roles);
+        return $query;
+    }
+
     public function index(Request $request) {
         Gate::allowIf(
             $request->user() &&
             $request->user()->role === "admin"
         );
 
-        $request->validate([
-            "search_name" => "nullable|max:255",
-            "search_email" => "nullable|max:255",
-        ]);
-
-        $users = User::query()
-            ->orderBy("role")
-            ->orderBy("id");
-
-        if ($request->search_name)
-            $users->where("name", "like", "%" . $request->search_name . "%");
-        if ($request->search_email)
-            $users->where("email", "like", "%" . $request->search_email . "%");
-        if ($request->roles !== null)
-            $users->whereIn("role", $request->roles);
-
+        $users = $this->filterUsers(User::query(), $request);
         return view("admin.users.index", [
             "users" => $users
                 ->paginate(10)
@@ -129,5 +135,29 @@ class UserController extends Controller
         return redirect()->route("admin.users.index")->with([
             "success" => "User deleted!"
         ]);
+    }
+
+    public function trash(Request $request) {
+        $users = $this->filterUsers(User::onlyTrashed(), $request);
+        return view("admin.users.trash", [
+            "users" => $users
+                ->paginate(10)
+                ->withQueryString()
+        ]);
+    }
+
+    public function restore(User $user) {
+        if (!$user->deleted_at)
+            return back()->withErrors([
+                "user" => "Not found"
+            ]);
+        $user->restore();
+        return redirect()
+            ->route("admin.users.show", [
+                "user" => $user
+            ])
+            ->with([
+                "success" => "User restored successfully."
+            ]);
     }
 }

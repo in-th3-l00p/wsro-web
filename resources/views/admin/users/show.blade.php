@@ -18,7 +18,7 @@
                 <i class="fa-solid fa-pen-to-square"></i>
             </a>
 
-            <x-admin.user.delete-button :user="$user" />
+            <x-admin.users.delete-button :user="$user" />
         </div>
     </x-admin.container>
 @endsection

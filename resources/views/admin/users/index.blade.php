@@ -6,96 +6,25 @@
                 "max-w-fit",
                 "animate-fadein" => !request()->has("page")
             ])>
-            <form class="mb-8" id="search-form">
-                <div class="flex flex-wrap gap-16">
-                    <div>
-                        <h2 class="text-2xl mb-2">{{ __("Search") }}:</h2>
+            <x-admin.users.filter />
 
-                        <div class="form-group mb-2">
-                            <label for="search_name" class="label w-16">{{ __("Name") }}:</label>
-                            <input
-                                type="text" name="search_name" id="search_name" class="input"
-                                placeholder="{{ __("Search by name") }}"
-                                value="{{ request()->search_name }}"
-                            >
-                        </div>
+            <div class="w-full mb-4 flex items-center gap-2 flex-wrap">
+                <h2 class="text-lg me-2">Operations:</h2>
 
-                        <div class="form-group mb-4">
-                            <label for="search_email" class="label w-16">{{ __("Email") }}:</label>
-                            <input
-                                type="text" name="search_email" id="search_email" class="input"
-                                placeholder="{{ __("Search by email") }}"
-                                value="{{ request()->search_email }}"
-                            >
-                        </div>
-
-                        <button
-                            type="submit"
-                            class="btn mt-auto"
-                            title="{{ __("Apply filters") }}"
-                        >
-                            {{ __("Apply") }}
-                        </button>
-                    </div>
-
-                    <div>
-                        <h2 class="text-2xl mb-2">{{ __("Select") }}:</h2>
-
-                        <label for="roles">Roles:</label>
-                        <div class="flex gap-6">
-                            <div class="form-group">
-                                <input
-                                    type="checkbox"
-                                    name="roles[]"
-                                    id="users"
-                                    value="user"
-                                    class="checkbox"
-                                    @checked(
-                                        request()->roles === null ||
-                                        in_array("user", request()->roles)
-                                    )
-                                >
-                                <label for="users">Users</label>
-                            </div>
-
-                            <div class="form-group">
-                                <input
-                                    type="checkbox"
-                                    name="roles[]"
-                                    id="admins"
-                                    value="admin"
-                                    class="checkbox"
-                                    @checked(
-                                        request()->roles === null ||
-                                        in_array("admin", request()->roles)
-                                    )
-                                >
-                                <label for="admins">Admins</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-            <form class="mb-16">
-                <h2 class="text-2xl mb-2">{{ __("Reset filters") }}:</h2>
-                <button
-                    title="{{ __("Reset filters") }}"
-                    type="submit"
-                    class="btn"
-                >
-                    {{ __("Reset") }}
-                </button>
-            </form>
-
-            <div class="w-full mb-4 flex items-center gap-4 flex-wrap">
-                <h2 class="text-2xl">{{ __("Create user") }}:</h2>
                 <a
                     title="{{ __("Create user") }}"
                     href="{{ route("admin.users.create") }}"
                     class="icon-btn"
                 >
                     <i class="fa-solid fa-plus"></i>
+                </a>
+
+                <a
+                    title="{{ __("Users trash") }}"
+                    href="{{ route("admin.users.trash") }}"
+                    class="icon-btn"
+                >
+                    <i class="fa-solid fa-trash-can"></i>
                 </a>
             </div>
             @if ($users->count() > 0)
@@ -135,7 +64,7 @@
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
 
-                                <x-admin.user.delete-button :user="$user" />
+                                <x-admin.users.delete-button :user="$user" />
                             </td>
                         </tr>
                     @endforeach
