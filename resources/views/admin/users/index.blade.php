@@ -30,6 +30,16 @@
                 >
                     <i class="fa-solid fa-trash-can"></i>
                 </a>
+
+                <form>
+                    <button
+                        type="submit"
+                        title="{{ __("Reset filters") }}"
+                        class="icon-btn"
+                    >
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+                </form>
             </div>
             @if ($users->count() > 0)
                 <table class="table mb-4">

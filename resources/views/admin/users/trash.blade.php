@@ -17,6 +17,21 @@
             </x-slot:subtitle>
 
             <x-admin.users.filter />
+
+
+            <div class="w-full mb-4 flex items-center gap-2 flex-wrap">
+                <h2 class="text-lg me-2">Operations:</h2>
+
+                <form>
+                    <button
+                        type="submit"
+                        title="{{ __("Reset filters") }}"
+                        class="icon-btn"
+                    >
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+                </form>
+            </div>
             @if ($users->count() > 0)
                 <table class="table mb-4">
                     <thead>

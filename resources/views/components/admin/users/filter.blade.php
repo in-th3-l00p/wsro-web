@@ -1,4 +1,4 @@
-<form class="mb-8" id="search-form">
+<form class="mb-16" id="search-form">
     <div class="flex flex-wrap gap-16">
         <div>
             <h2 class="text-2xl mb-2">{{ __("Search") }}:</h2>
@@ -68,15 +68,3 @@
         </div>
     </div>
 </form>
-
-<form class="mb-16">
-    <h2 class="text-2xl mb-2">{{ __("Reset filters") }}:</h2>
-    <button
-        title="{{ __("Reset filters") }}"
-        type="submit"
-        class="btn"
-    >
-        {{ __("Reset") }}
-    </button>
-</form>
-
