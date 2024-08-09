@@ -30,11 +30,8 @@ class UserController extends Controller
             $users->where("name", "like", "%" . $request->search_name . "%");
         if ($request->search_email)
             $users->where("email", "like", "%" . $request->search_email . "%");
-        if ($request->roles !== null) {
-            $users->where("role", "=", $request->roles[0]);
-            for ($i = 1; $i < sizeof($request->roles); $i++)
-                $users->orWhere("role", "=", $request->roles[$i]);
-        }
+        if ($request->roles !== null)
+            $users->whereIn("role", $request->roles);
 
         return view("admin.users.index", [
             "users" => $users
