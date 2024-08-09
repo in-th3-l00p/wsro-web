@@ -2,6 +2,10 @@
 
 @section("content")
     <x-admin.container :title="__('Create user')">
+        <x-slot:subtitle>
+            <h2 class="mt-2">{{ __("Complete the fields related to the user's data") }}</h2>
+        </x-slot:subtitle>
+
         <form
             action="{{ route("admin.users.store") }}"
             method="post"

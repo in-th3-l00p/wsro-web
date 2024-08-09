@@ -2,6 +2,10 @@
 
 @section("content")
     <x-admin.container :title="__('Users')">
+        <x-slot:subtitle>
+            <h2 class="mt-2">{{ __("All the users within the application") }}</h2>
+        </x-slot:subtitle>
+
         <div @class([
                 "max-w-fit",
                 "animate-fadein" => !request()->has("page")

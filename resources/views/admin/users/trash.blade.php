@@ -6,6 +6,10 @@
                 "max-w-fit",
                 "animate-fadein" => !request()->has("page")
             ])>
+            <x-slot:subtitle>
+                <h2 class="mt-2">{{ __("All the deleted users") }}</h2>
+            </x-slot:subtitle>
+
             <x-admin.users.filter />
             @if ($users->count() > 0)
                 <table class="table mb-4">

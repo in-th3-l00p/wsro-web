@@ -2,6 +2,10 @@
 
 @section("content")
     <x-admin.container :title="__('User') . ' ' . $user->name">
+        <x-slot:subtitle>
+            <h2 class="mt-2">{{ __("User profile page") }}</h2>
+        </x-slot:subtitle>
+
         <div class="mb-4">
             <p>{{ __("Name") }}: {{ $user->name }}</p>
             <p>{{ __(" Email") }}: {{ $user->email }}</p>

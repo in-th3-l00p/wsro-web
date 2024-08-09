@@ -2,6 +2,10 @@
 
 @section("content")
     <x-admin.container :title="__('Edit user') . ' ' . $user->name">
+        <x-slot:subtitle>
+            <h2 class="mt-2">{{ __("Update user's information") }}</h2>
+        </x-slot:subtitle>
+
         <form
             action="{{ route("admin.users.update", [ "user" => $user ]) }}"
             method="post"
