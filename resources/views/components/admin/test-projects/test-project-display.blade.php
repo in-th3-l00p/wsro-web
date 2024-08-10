@@ -12,7 +12,7 @@
         <a
             title="{{ __("Open test project") }}"
             href="{{ route("admin.testProjects.show", [ "test_project" => $testProject ]) }}"
-            class="icon-btn !w-full max-w-fit !px-4"
+            class="btn"
         >
             <i class="fa-solid fa-eye"></i>
             Open
