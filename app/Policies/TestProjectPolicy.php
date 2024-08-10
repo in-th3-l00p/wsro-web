@@ -12,6 +12,10 @@ class TestProjectPolicy
         return true;
     }
 
+    public function viewTrashed(User $user): bool {
+        return $user->role === "admin";
+    }
+
     public function view(User $user, TestProject $testProject): bool {
         return
             $user->role === "admin" ||
@@ -30,8 +34,12 @@ class TestProjectPolicy
         return $user->role === "admin";
     }
 
-    public function restore(User $user, TestProject $testProject): bool {
-        return $user->role === "admin";
+    public function restore(User $user, TestProject $testProject) {
+        if (!$testProject->deleted_at)
+            return Response::denyAsNotFound();
+        return $user->role === "admin" ?
+            Response::allow() :
+            Response::deny();
     }
 
     public function forceDelete(User $user, TestProject $testProject): bool {

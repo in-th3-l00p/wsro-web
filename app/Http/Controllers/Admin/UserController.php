@@ -136,7 +136,7 @@ class UserController extends Controller
                 "user" => $user
             ])
             ->with([
-                "success" => "User restored successfully."
+                "success" => "User restored successfully!"
             ]);
     }
 }

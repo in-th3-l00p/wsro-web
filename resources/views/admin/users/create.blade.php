@@ -22,16 +22,7 @@
         >
             @csrf
 
-            @if ($errors->count() > 0)
-                <x-ui.danger-alert class="!bg-zinc-50 text-red-600 mb-8">
-                    <p>{{ __("The following errors occurred when trying to create this user:") }}</p>
-                    <ul class="list-disc ms-8">
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </x-ui.danger-alert>
-            @endif
+            <x-admin.errors-alert :errors="$errors" />
 
             <div class="form-group mb-4">
                 <label for="name" class="label w-32">{{ __("Name") }}:</label>

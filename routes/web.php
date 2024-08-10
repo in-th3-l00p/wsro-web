@@ -38,6 +38,13 @@ Route::prefix("/admin")->group(function () {
         "destroy" => "admin.users.destroy",
     ]);
 
+    Route::get("/test-projects/delete/{user}", [TestProjectController::class, "delete"])
+        ->name("admin.testProjects.delete");
+    Route::get("/test-projects/trash", [TestProjectController::class, "trash"])
+        ->name("admin.testProjects.trash");
+    Route::put("/test-projects/restore/{user}", [TestProjectController::class, "restore"])
+        ->withTrashed()
+        ->name("admin.testProjects.restore");
     Route::resource("test-projects", TestProjectController::class)
         ->names([
             "index" => "admin.testProjects.index",

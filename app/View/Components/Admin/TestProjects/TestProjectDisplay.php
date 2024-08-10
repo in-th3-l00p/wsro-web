@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Admin\TestProject;
+namespace App\View\Components\Admin\TestProjects;
 
 use App\Models\TestProject;
 use Closure;
@@ -12,10 +12,9 @@ class TestProjectDisplay extends Component
     public function __construct(
         public TestProject $testProject
     ) {
-        //
     }
 
     public function render(): View|Closure|string {
-        return view('components.admin.test-project.test-project-display');
+        return view('components.admin.test-projects.test-project-display');
     }
 }

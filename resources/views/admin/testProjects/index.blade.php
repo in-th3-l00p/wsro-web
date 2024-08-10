@@ -14,12 +14,25 @@
             </x-admin.container-subtitle>
         </x-slot:subtitle>
 
+        <x-admin.operations.container>
+            <x-admin.operations.route
+                :title="__('Create test project')"
+                :href="route('admin.testProjects.create')"
+                icon="fa-plus"
+            />
+            <x-admin.operations.route
+                :title="__('Test project trash')"
+                :href="route('admin.testProjects.trash')"
+                icon="fa-trash"
+            />
+        </x-admin.operations.container>
+
         <section @class([
             "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
             "gap-16",
         ])>
             @forelse($testProjects as $testProject)
-                <x-admin.test-project.test-project-display
+                <x-admin.test-projects.test-project-display
                     :testProject="$testProject"
                 />
             @empty
