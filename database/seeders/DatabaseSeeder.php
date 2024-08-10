@@ -34,7 +34,9 @@ class DatabaseSeeder extends Seeder {
             $tagsCount = rand(0, 4);
             $tags = TestProjectTag::all()->shuffle();
             for ($i = 0; $i < $tagsCount; $i++) {
-                $testProject->tags()->attach($tags[$i]->id);
+                $testProject
+                    ->tags()
+                    ->attach($tags[$i]->id);
             }
         }
     }

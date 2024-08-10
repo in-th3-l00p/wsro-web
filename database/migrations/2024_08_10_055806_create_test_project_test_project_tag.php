@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('test_project_test_project_tag', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-
             $table->foreignIdFor(TestProject::class)->constrained();
             $table->foreignIdFor(TestProjectTag::class)->constrained();
         });
