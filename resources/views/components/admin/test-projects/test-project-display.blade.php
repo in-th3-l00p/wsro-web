@@ -10,11 +10,12 @@
 
     <div class="flex gap-4">
         <a
-            title="{{ __("See test project") }}"
+            title="{{ __("Open test project") }}"
             href="{{ route("admin.testProjects.show", [ "test_project" => $testProject ]) }}"
-            class="icon-btn"
+            class="icon-btn !w-full max-w-fit !px-4"
         >
             <i class="fa-solid fa-eye"></i>
+            Open
         </a>
 
         <a
