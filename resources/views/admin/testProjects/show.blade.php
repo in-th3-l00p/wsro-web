@@ -10,7 +10,7 @@
         ]"
     >
         <x-slot:subtitle>
-            <div class="mb-4 mt-4">
+            <div class="mb-4 mt-2">
                 {!! $testProject->description !!}
             </div>
 
