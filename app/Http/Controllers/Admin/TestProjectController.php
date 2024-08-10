@@ -83,7 +83,7 @@ class TestProjectController extends Controller
     }
 
     public function restore(TestProject $testProject) {
-        Gate::authorize("restore", TestProject::class);
+        Gate::authorize("restore", $testProject);
         $testProject->restore();
         return redirect()->route("admin.testProjects.show", [
             "test_project" => $testProject
