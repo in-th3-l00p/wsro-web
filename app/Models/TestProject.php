@@ -15,6 +15,7 @@ class TestProject extends Model
     protected $fillable = [
         "name",
         "description",
+        "visibility",
         "owner_id"
     ];
 

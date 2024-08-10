@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TestProjectController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
@@ -14,6 +15,7 @@ Route::post("/login", [AuthController::class, "loginSubmit"])
     ->name("login.submit");
 Route::get("/logout", [AuthController::class, "logout"])
     ->name("logout");
+
 
 Route::prefix("/admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, "dashboard"])
@@ -35,4 +37,15 @@ Route::prefix("/admin")->group(function () {
         "update" => "admin.users.update",
         "destroy" => "admin.users.destroy",
     ]);
+
+    Route::resource("test-projects", TestProjectController::class)
+        ->names([
+            "index" => "admin.testProjects.index",
+            "show" => "admin.testProjects.show",
+            "create" => "admin.testProjects.create",
+            "store" => "admin.testProjects.store",
+            "edit" => "admin.testProjects.edit",
+            "update" => "admin.testProjects.update",
+            "destroy" => "admin.testProjects.destroy",
+        ]);
 });

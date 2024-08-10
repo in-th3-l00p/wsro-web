@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\TestProjectAttachment;
+use App\Http\Controllers\Controller;
+use App\Models\TestProjectTag;
 use Illuminate\Http\Request;
 
-class TestProjectAttachmentController extends Controller
+class TestProjectTagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class TestProjectAttachmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TestProjectAttachment $testProjectAttachment)
+    public function show(TestProjectTag $testProjectTag)
     {
         //
     }
@@ -42,7 +43,7 @@ class TestProjectAttachmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TestProjectAttachment $testProjectAttachment)
+    public function edit(TestProjectTag $testProjectTag)
     {
         //
     }
@@ -50,7 +51,7 @@ class TestProjectAttachmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TestProjectAttachment $testProjectAttachment)
+    public function update(Request $request, TestProjectTag $testProjectTag)
     {
         //
     }
@@ -58,7 +59,7 @@ class TestProjectAttachmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TestProjectAttachment $testProjectAttachment)
+    public function destroy(TestProjectTag $testProjectTag)
     {
         //
     }

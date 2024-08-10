@@ -19,3 +19,7 @@
 
 /* animations */
 @import "animations/fadein";
+
+body {
+    @apply bg-gray-100;
+}

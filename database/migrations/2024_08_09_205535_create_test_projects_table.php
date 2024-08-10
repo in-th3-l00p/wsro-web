@@ -19,6 +19,11 @@ return new class extends Migration
 
             $table->string("title");
             $table->text("description");
+            $table->enum(
+                "visibility",
+                ["public", "draft", "private"]
+            );
+
             $table
                 ->foreignIdFor(User::class, "owner_id")
                 ->constrained("users");
