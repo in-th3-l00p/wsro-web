@@ -2,7 +2,7 @@
 
 @section("content")
     <x-admin.container
-        :title="__('Test project') . ' ' . $testProject->title"
+        :title="__('Test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.testProjects.index'), 'name' => __('Test projects') ],

@@ -2,22 +2,24 @@
 
 @section("content")
     <x-admin.container
-        :title="__('Delete user') . ' \'\'' . $user->name . '\'\''"
+        :title="__('Delete test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
-            [ 'name' => __('Delete') . ' \'\'' . $user->name . '\'\'' ],
+            [ 'name' => __('Delete') . ' \'\'' . $testProject->title . '\'\'' ],
         ]"
     >
         <x-slot:subtitle>
             <x-admin.container-subtitle>
-                {{ __("Are you sure you want to delete user") }}: {{ $user->name }}?
+                {{ __("Are you sure you want to delete test project") }}: {{ $testProject->title }}?
             </x-admin.container-subtitle>
         </x-slot:subtitle>
 
         <form
             method="post"
-            action="{{ route("admin.users.destroy", [ "user" => $user ]) }}"
+            action="{{ route("admin.testProjects.destroy", [
+                "test_project" => $testProject
+            ]) }}"
         >
             @csrf
             @method("DELETE")

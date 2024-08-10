@@ -17,21 +17,5 @@
             <i class="fa-solid fa-eye"></i>
             Open
         </a>
-
-        <a
-            title="{{ __("Edit test project") }}"
-            href="{{ route("admin.testProjects.edit", [ "test_project" => $testProject ]) }}"
-            class="icon-btn"
-        >
-            <i class="fa-solid fa-pen-to-square"></i>
-        </a>
-
-        <a
-            title="{{ __("Delete test project") }}"
-            href="{{ route("admin.testProjects.edit", [ "test_project" => $testProject ]) }}"
-            class="icon-btn"
-        >
-            <i class="fa-solid fa-trash"></i>
-        </a>
     </div>
 </div>
