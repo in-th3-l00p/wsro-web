@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\TestProject;
+use App\Models\TestProjectTag;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -26,5 +27,15 @@ class DatabaseSeeder extends Seeder {
         TestProject::factory(5)->create([
             "visibility" => "draft"
         ]);
+
+        // test project tagggsss
+        TestProjectTag::factory(10)->create();
+        foreach (TestProject::all() as $testProject) {
+            $tagsCount = rand(0, 4);
+            $tags = TestProjectTag::all()->shuffle();
+            for ($i = 0; $i < $tagsCount; $i++) {
+                $testProject->tags()->attach($tags[$i]->id);
+            }
+        }
     }
 }

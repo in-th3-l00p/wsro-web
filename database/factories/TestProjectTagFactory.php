@@ -7,17 +7,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TestProjectTag>
  */
-class TestProjectTagFactory extends Factory
-{
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
+class TestProjectTagFactory extends Factory {
+    public function definition(): array {
         return [
-            //
+            "name" => fake()->randomElement([
+                fake()->randomElement(["backend", "frontend", "framework", "nationals"]),
+                fake()->year()
+            ])
         ];
     }
 }
