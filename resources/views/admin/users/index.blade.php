@@ -1,7 +1,13 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container :title="__('Users')">
+    <x-admin.container
+        :title="__('Users')"
+        :breadcrumbPath="[
+            [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
+            [ 'name' => __('Users')],
+        ]"
+    >
         <x-slot:subtitle>
             <x-admin.container-subtitle>
                 {{ __("All the users within the application") }}

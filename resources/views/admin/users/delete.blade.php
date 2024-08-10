@@ -4,8 +4,9 @@
     <x-admin.container
         :title="__('Delete user') . ' ' . $user->name"
         :breadcrumbPath="[
+            [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
-            [ 'name' => __('Delete user') . ' ' . $user->name ],
+            [ 'name' => __('Delete') . ' \'\'' . $user->name . '\'\'' ],
         ]"
     >
         <x-slot:subtitle>

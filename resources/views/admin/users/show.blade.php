@@ -4,8 +4,9 @@
     <x-admin.container
         :title="__('User') . ' ' . $user->name"
         :breadcrumbPath="[
+            [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
-            [ 'name' => __('Profile of ') . ' ' . $user->name ],
+            [ 'name' => __('Profile of ') . ' \'\'' . $user->name . '\'\'' ],
         ]"
     >
         <x-slot:subtitle>

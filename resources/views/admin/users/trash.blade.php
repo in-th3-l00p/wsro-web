@@ -4,6 +4,7 @@
     <x-admin.container
         :title="__('Deleted users')"
         :breadcrumbPath="[
+            [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
             [ 'name' => __('Trash')],
         ]"
