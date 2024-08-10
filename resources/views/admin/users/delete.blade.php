@@ -9,7 +9,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <h2 class="mt-2">{{ __("Are you sure you want to delete user") }}: {{ $user->name }} ?</h2>
+            <x-admin.container-subtitle>
+                {{ __("Are you sure you want to delete user") }}: {{ $user->name }} ?
+            </x-admin.container-subtitle>
         </x-slot:subtitle>
 
         <form

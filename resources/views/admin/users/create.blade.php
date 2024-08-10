@@ -9,7 +9,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <h2 class="mt-2">{{ __("Complete the fields related to the user's data") }}</h2>
+            <x-admin.container-subtitle>
+                {{ __("Complete the fields related to the user's data") }}
+            </x-admin.container-subtitle>
         </x-slot:subtitle>
 
         <form

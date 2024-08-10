@@ -13,7 +13,9 @@
                 "animate-fadein" => !request()->has("page")
             ])>
             <x-slot:subtitle>
-                <h2 class="mt-2">{{ __("All the deleted users") }}</h2>
+                <x-admin.container-subtitle>
+                    {{ __("All the deleted users") }}
+                </x-admin.container-subtitle>
             </x-slot:subtitle>
 
             <x-admin.users.filter />

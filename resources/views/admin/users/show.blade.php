@@ -9,7 +9,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <h2 class="mt-2">{{ __("User profile page") }}</h2>
+            <x-admin.container-subtitle>
+                {{ __("User profile page") }}
+            </x-admin.container-subtitle>
         </x-slot:subtitle>
 
         <div class="mb-4">

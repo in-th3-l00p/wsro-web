@@ -9,7 +9,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <h2 class="mt-2">{{ __("Update user's information") }}</h2>
+            <x-admin.container-subtitle>
+                {{ __("Update user's information") }}
+            </x-admin.container-subtitle>
         </x-slot:subtitle>
 
         <form
