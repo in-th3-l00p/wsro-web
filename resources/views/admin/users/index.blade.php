@@ -14,12 +14,13 @@
             </x-admin.container-subtitle>
         </x-slot:subtitle>
 
-        <div @class([
-                "max-w-fit",
+        <div
+            @class([
+                "max-w-fit mx-auto",
                 "animate-fadein" => !request()->has("page")
-            ])>
+            ])
+        >
             <x-admin.users.filter/>
-
             <x-admin.operations.container :text="__('Operations')">
                 <x-admin.operations.route
                     :title="__('Create user')"
