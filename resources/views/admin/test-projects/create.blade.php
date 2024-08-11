@@ -22,7 +22,10 @@
         >
             @csrf
 
-            <x-admin.errors-alert :errors="$errors" />
+            <x-admin.errors-alert
+                :text="__('The following errors occurred when trying to create this test project')"
+                :errors="$errors"
+            />
 
             <div class="form-group mb-4">
                 <label for="title" class="label w-32">{{ __("Title") }}:</label>

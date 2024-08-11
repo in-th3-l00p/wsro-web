@@ -2,15 +2,16 @@
 
 @section("content")
     <x-admin.container
-        :title="__('Add tag to') . ' \'\'' . $testProject->title . '\'\''"
+        :title="__('Edit tag') . ' \'\'' . $tag->name . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
+            [ 'href' => route('admin.test-projects.tags.index'), 'name' => __('Tags')],
             [
-                'href' => route('admin.test-projects.show', [ 'test_project' => $testProject ]),
-                'name' => __('Test project') . ' \'\'' . $testProject->title . '\'\''
+                'href' => route('admin.test-projects.tags.show', [ 'tag' => $tag ]),
+                'name' => __('Tag') . ' \'\'' . $tag->name . '\'\''
             ],
-            [ 'name' => __('Add tag') ],
+            [ 'name' => __('Edit') ]
         ]"
     >
         <x-slot:subtitle>
@@ -20,16 +21,17 @@
         </x-slot:subtitle>
 
         <form
-            action="{{ route("admin.test-projects.tags.store", [
-                "test_project" => $testProject
+            action="{{ route("admin.test-projects.tags.update", [
+                "tag" => $tag
             ]) }}"
             method="post"
             class="max-w-xl"
         >
             @csrf
+            @method("PUT")
 
             <x-admin.errors-alert
-                :text="__('The following errors occurred when trying to create this tag')"
+                :text="__('The following errors occurred when trying to update this tag')"
                 :errors="$errors"
             />
 
@@ -39,7 +41,7 @@
                     type="text" name="name" id="name"
                     @class(["input", "ring-2 ring-rose-600" => $errors->has("name")])
                     placeholder="{{ __("Tag's name") }}"
-                    value="{{ old("name") }}"
+                    value="{{ $tag->name }}"
                     autocomplete="off"
                 >
             </div>

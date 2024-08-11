@@ -48,20 +48,25 @@ class TestProjectTagController extends Controller
         ]);
     }
 
-    // not implemented
-    public function edit(
-        TestProject $testProject,
-        TestProjectTag $testProjectTag
-    ) {
+    public function edit(TestProjectTag $tag) {
+        return view("admin.test-projects.tags.edit", [
+            "tag" => $tag
+        ]);
     }
 
-    // not implemented
     public function update(
         Request $request,
-        TestProject $testProject,
-        TestProjectTag $testProjectTag
+        TestProjectTag $tag
     ) {
-
+        $body = $request->validate([
+            "name" => "required|max:255"
+        ]);
+        $tag->update($body);
+        return redirect()
+            ->route("admin.test-projects.tags.show", ["tag" => $tag])
+            ->with([
+                "success" => __("Tag updated successfully!")
+            ]);
     }
 
     public function destroy(
