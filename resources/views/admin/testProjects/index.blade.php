@@ -29,7 +29,7 @@
 
         <section @class([
             "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-            "gap-16",
+            "gap-16 max-w-fit mx-auto",
         ])>
             @forelse($testProjects as $testProject)
                 <x-admin.test-projects.test-project-display

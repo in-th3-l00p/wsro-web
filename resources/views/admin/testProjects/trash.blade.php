@@ -6,7 +6,7 @@
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.testProjects.index'), 'name' => __('Test projects') ],
-            [ 'name' => __('Test projects trash')],
+            [ 'name' => __('Trash')],
         ]"
     >
         <x-slot:subtitle>
@@ -17,7 +17,7 @@
 
         <section @class([
             "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-            "gap-16",
+            "gap-16 max-w-fit mx-auto",
         ])>
             @forelse($testProjects as $testProject)
                 <x-admin.test-projects.trashed-test-project-display

@@ -1,7 +1,7 @@
 <div
     type="button"
     @class([
-        "h-96 max-w-96 mx-auto",
+        "h-96 max-w-96",
         "bg-white p-8 rounded-md shadow-md flex flex-col gap-4",
         "hover:scale-105 hover:shadow-lg transition-all"
     ])
