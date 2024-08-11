@@ -58,20 +58,26 @@ Route::prefix("/admin")->group(function () {
         ]);
 
     Route::delete(
-        "/admin/test-projects/{test_project}/tags",
+        "/test-projects/{test_project}/tags",
         [TestProjectTagController::class, "destroy"]
     )
         ->name("admin.test-projects.tags.destroy");
+    Route::prefix("/test-projects")
+        ->resource("tags", TestProjectTagController::class)
+        ->only([ "index", "show", "edit", "update" ])
+        ->names([
+            "index" => "admin.test-projects.tags.index",
+            "show" => "admin.test-projects.tags.show",
+            "edit" => "admin.test-projects.tags.edit",
+            "update" => "admin.test-projects.tags.update",
+        ]);
     Route::resource(
         "test-projects.tags",
         TestProjectTagController::class
     )
+        ->only([ "create", "store" ])
         ->names([
-            "index" => "admin.test-projects.tags.index",
-            "show" => "admin.test-projects.tags.show",
             "create" => "admin.test-projects.tags.create",
-            "store" => "admin.test-projects.tags.store",
-            "edit" => "admin.test-projects.tags.edit",
-            "update" => "admin.test-projects.tags.update",
+            "store" => "admin.test-projects.tags.store"
         ]);
 });

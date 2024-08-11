@@ -10,8 +10,10 @@ use Illuminate\Support\Str;
 
 class TestProjectTagController extends Controller
 {
-    // not implemented
-    public function index(TestProject $testProject) {
+    public function index() {
+        return view("admin.test-projects.tags.index", [
+            "tags" => TestProjectTag::all()
+        ]);
     }
 
     public function create(TestProject $testProject) {

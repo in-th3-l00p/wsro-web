@@ -9,7 +9,7 @@
     @if ($testProject->tags()->count() > 0)
         <div class="flex flex-wrap gap-2">
             @foreach ($testProject->tags()->get() as $tag)
-                <a href="#" class="tag">{{ $tag->name }}</a>
+                <div class="tag-disabled">{{ $tag->name }}</div>
             @endforeach
         </div>
     @endif

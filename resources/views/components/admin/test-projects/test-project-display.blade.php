@@ -9,7 +9,14 @@
     @if ($testProject->tags()->count() > 0)
         <div class="flex flex-wrap gap-2">
             @foreach ($testProject->tags()->get() as $tag)
-                <a href="#" class="tag">{{ $tag->name }}</a>
+                <a
+                    href="{{ route("admin.test-projects.tags.show", [
+                        "tag" => $tag
+                    ]) }}"
+                    class="tag"
+                >
+                    {{ $tag->name }}
+                </a>
             @endforeach
         </div>
     @endif
@@ -22,7 +29,9 @@
     <div class="flex gap-4">
         <a
             title="{{ __("Open test project") }}"
-            href="{{ route("admin.test-projects.show", [ "test_project" => $testProject ]) }}"
+            href="{{ route("admin.test-projects.show", [
+                "test_project" => $testProject
+            ]) }}"
             class="btn"
         >
             <i class="fa-solid fa-eye"></i>

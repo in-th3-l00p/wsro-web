@@ -22,6 +22,11 @@
                     icon="fa-plus"
                 />
                 <x-admin.operations.route
+                    :title="__('Test project tags')"
+                    :href="route('admin.test-projects.tags.index')"
+                    icon="fa-tags"
+                />
+                <x-admin.operations.route
                     :title="__('Test project trash')"
                     :href="route('admin.test-projects.trash')"
                     icon="fa-trash"
