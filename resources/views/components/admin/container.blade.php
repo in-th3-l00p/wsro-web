@@ -2,7 +2,7 @@
     <x-admin.sidebar />
 
     <section class="flex-grow py-24 px-8 sm:px-16 md:px-32 mx-auto">
-        <header class="mb-16">
+        <header class="mb-8">
             @if ($breadcrumbPath)
                 <x-ui.breadcrumbs :path="$breadcrumbPath" />
             @endif
