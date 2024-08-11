@@ -6,23 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Models\TestProject;
 use App\Models\TestProjectTag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class TestProjectTagController extends Controller
 {
     public function index() {
+        Gate::authorize("viewAny", TestProjectTag::class);
         return view("admin.test-projects.tags.index", [
             "tags" => TestProjectTag::all()
         ]);
     }
 
     public function create(TestProject $testProject) {
+        Gate::authorize("create", TestProjectTag::class);
         return view("admin.test-projects.tags.create", [
             "testProject" => $testProject
         ]);
     }
 
-    public function store(TestProject $testProject, Request $request) {
+    public function store(
+        TestProject $testProject,
+        Request $request
+    ) {
+        Gate::authorize("create", TestProjectTag::class);
         $request->validate([
             "name" => "required|max:255"
         ]);
@@ -43,12 +50,14 @@ class TestProjectTagController extends Controller
     }
 
     public function show(TestProjectTag $tag) {
+        Gate::authorize("view", $tag);
         return view("admin.test-projects.tags.show", [
             "tag" => $tag
         ]);
     }
 
     public function edit(TestProjectTag $tag) {
+        Gate::authorize("update", $tag);
         return view("admin.test-projects.tags.edit", [
             "tag" => $tag
         ]);
@@ -58,6 +67,7 @@ class TestProjectTagController extends Controller
         Request $request,
         TestProjectTag $tag
     ) {
+        Gate::authorize("update", $tag);
         $body = $request->validate([
             "name" => "required|max:255"
         ]);
@@ -73,6 +83,7 @@ class TestProjectTagController extends Controller
         TestProject $testProject,
         TestProjectTag $tag
     ) {
+        Gate::authorize("delete", $tag);
         $testProject->tags()->detach($tag);
         if ($tag->testProjects()->count() === 0) {
             $tag->delete();
@@ -93,12 +104,13 @@ class TestProjectTagController extends Controller
         Request $request,
         TestProject $testProject
     ) {
+        $tags = collect([]);
+        foreach ($request->tags as $tagId)
+            $tags->push(TestProjectTag::findOrFail($tagId));
         $testProject->tags()->detach($request->tags);
-        foreach ($request->tags as $tagId) {
-            $tag = TestProjectTag::findOrFail($tagId);
+        foreach ($tags as $tag)
             if ($tag->testProjects()->count() === 0)
                 $tag->delete();
-        }
 
         $message = "Tag";
         if (sizeof($request->tags) > 1)
