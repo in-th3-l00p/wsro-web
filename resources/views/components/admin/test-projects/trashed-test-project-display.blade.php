@@ -9,9 +9,7 @@
     @if ($testProject->tags()->count() > 0)
         <div class="flex flex-wrap gap-2">
             @foreach ($testProject->tags()->get() as $tag)
-                <div class="rounded-2xl bg-rose-600 text-white px-3 py-1">
-                    {{ $tag->name }}
-                </div>
+                <x-admin.test-projects.tag-display :tag="$tag" />
             @endforeach
         </div>
     @endif
