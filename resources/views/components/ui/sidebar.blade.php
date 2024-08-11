@@ -1,5 +1,5 @@
 <aside
-    x-data="{ open: false }"
+    x-data="{ open: true }"
     @class([
         "sticky top-0 left-0 h-screen",
         "bg-rose-700 flex gap-2 shadow-rose-950 shadow-lg"
