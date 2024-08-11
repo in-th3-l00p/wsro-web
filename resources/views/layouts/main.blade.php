@@ -12,6 +12,7 @@
         "resources/scss/app.scss",
         "resources/js/app.js"
     ])
+    @stack("styles")
 </head>
 <body>
     @yield("content")

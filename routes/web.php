@@ -55,4 +55,9 @@ Route::prefix("/admin")->group(function () {
             "update" => "admin.testProjects.update",
             "destroy" => "admin.testProjects.destroy",
         ]);
+
+    Route::resource(
+        "test-projects.tags",
+        TestProjectController::class
+    );
 });

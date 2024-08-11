@@ -3,64 +3,43 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\TestProject;
 use App\Models\TestProjectTag;
 use Illuminate\Http\Request;
 
 class TestProjectTagController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function index(TestProject $testProject) {
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function create(TestProject $testProject) {
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(TestProject $testProject, Request $request) {
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(TestProjectTag $testProjectTag)
-    {
-        //
+    public function show(
+        TestProject $testProject,
+        TestProjectTag $testProjectTag
+    ) {
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TestProjectTag $testProjectTag)
-    {
-        //
+    public function edit(
+        TestProject $testProject,
+        TestProjectTag $testProjectTag
+    ) {
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, TestProjectTag $testProjectTag)
-    {
-        //
+    public function update(
+        Request $request,
+        TestProject $testProject,
+        TestProjectTag $testProjectTag
+    ) {
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(TestProjectTag $testProjectTag)
-    {
-        //
+    public function destroy(
+        TestProject $testProject,
+        TestProjectTag $testProjectTag
+    ) {
     }
 }
