@@ -22,7 +22,7 @@
     <div class="flex gap-4">
         <a
             title="{{ __("Open test project") }}"
-            href="{{ route("admin.testProjects.show", [ "test_project" => $testProject ]) }}"
+            href="{{ route("admin.test-projects.show", [ "test_project" => $testProject ]) }}"
             class="btn"
         >
             <i class="fa-solid fa-eye"></i>

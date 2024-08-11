@@ -9,10 +9,7 @@
             [ 'name' => __('Trash')],
         ]"
     >
-        <div @class([
-                "max-w-fit",
-                "animate-fadein" => !request()->has("page")
-            ])>
+        <div @class(["max-w-fit"])>
             <x-slot:subtitle>
                 <x-admin.container-subtitle>
                     {{ __("All the deleted users") }}

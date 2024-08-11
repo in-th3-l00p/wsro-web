@@ -5,7 +5,7 @@
         :title="__('Create test project')"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
-            [ 'href' => route('admin.testProjects.index'), 'name' => __('Test projects') ],
+            [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
             [ 'name' => __('Create') ],
         ]"
     >
@@ -16,9 +16,9 @@
         </x-slot:subtitle>
 
         <form
-            action="{{ route("admin.testProjects.store") }}"
+            action="{{ route("admin.test-projects.store") }}"
             method="post"
-            class="max-w-xl animate-fadein"
+            class="max-w-xl"
         >
             @csrf
 

@@ -5,7 +5,7 @@
         :title="__('Edit test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
-            [ 'href' => route('admin.testProjects.index'), 'name' => __('Test projects') ],
+            [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
             [ 'name' => __('Edit') . ' \'\'' . $testProject->title . '\'\'' ],
         ]"
     >
@@ -16,11 +16,11 @@
         </x-slot:subtitle>
 
         <form
-            action="{{ route("admin.testProjects.update", [
+            action="{{ route("admin.test-projects.update", [
                 "test_project" => $testProject
             ]) }}"
             method="post"
-            class="max-w-xl animate-fadein"
+            class="max-w-xl"
         >
             @csrf
             @method("PUT")

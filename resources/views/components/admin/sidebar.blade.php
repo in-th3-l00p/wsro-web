@@ -26,7 +26,7 @@
     </x-ui.sidebar-link>
 
     <x-ui.sidebar-link
-        route="admin.testProjects.index"
+        route="admin.test-projects.index"
         icon="fa-file"
     >
         {{ __("Test projects") }}

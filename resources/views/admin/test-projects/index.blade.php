@@ -18,20 +18,20 @@
             <x-admin.operations.container>
                 <x-admin.operations.route
                     :title="__('Create test project')"
-                    :href="route('admin.testProjects.create')"
+                    :href="route('admin.test-projects.create')"
                     icon="fa-plus"
                 />
                 <x-admin.operations.route
                     :title="__('Test project trash')"
-                    :href="route('admin.testProjects.trash')"
+                    :href="route('admin.test-projects.trash')"
                     icon="fa-trash"
                 />
             </x-admin.operations.container>
 
             <section @class([
-            "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-            "gap-16 max-w-fit mx-auto",
-        ])>
+                "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+                "gap-16 max-w-fit",
+            ])>
                 @forelse($testProjects as $testProject)
                     <x-admin.test-projects.test-project-display
                         :testProject="$testProject"

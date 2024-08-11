@@ -5,7 +5,7 @@
         :title="__('Test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
-            [ 'href' => route('admin.testProjects.index'), 'name' => __('Test projects') ],
+            [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
             [ 'name' => __('Test project') . ' \'\'' . $testProject->title . '\'\'' ],
         ]"
     >
@@ -18,14 +18,14 @@
                 <x-admin.operations.container>
                     <x-admin.operations.route
                         :title="__('Edit test project')"
-                        :href="route('admin.testProjects.edit', [
+                        :href="route('admin.test-projects.edit', [
                         'test_project' => $testProject
                     ])"
                         icon="fa-pen-to-square"
                     />
                     <x-admin.operations.route
                         :title="__('Delete test project')"
-                        :href="route('admin.testProjects.delete', [
+                        :href="route('admin.test-projects.delete', [
                         'test_project' => $testProject
                     ])"
                         icon="fa-trash"
@@ -43,7 +43,7 @@
                     <x-admin.test-projects.tag-display :tag="$tag" />
                 @endforeach
                 <a
-                    href="{{ route("test-projects.tags.create", [
+                    href="{{ route("admin.test-projects.tags.create", [
                             "test_project" => $testProject
                         ]) }}"
                     class="tag !px-8"

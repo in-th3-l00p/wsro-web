@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\TestProjectController;
+use App\Http\Controllers\Admin\TestProjectTagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
@@ -39,25 +40,34 @@ Route::prefix("/admin")->group(function () {
     ]);
 
     Route::get("/test-projects/delete/{test_project}", [TestProjectController::class, "delete"])
-        ->name("admin.testProjects.delete");
+        ->name("admin.test-projects.delete");
     Route::get("/test-projects/trash", [TestProjectController::class, "trash"])
-        ->name("admin.testProjects.trash");
+        ->name("admin.test-projects.trash");
     Route::put("/test-projects/restore/{test_project}", [TestProjectController::class, "restore"])
         ->withTrashed()
-        ->name("admin.testProjects.restore");
+        ->name("admin.test-projects.restore");
     Route::resource("test-projects", TestProjectController::class)
         ->names([
-            "index" => "admin.testProjects.index",
-            "show" => "admin.testProjects.show",
-            "create" => "admin.testProjects.create",
-            "store" => "admin.testProjects.store",
-            "edit" => "admin.testProjects.edit",
-            "update" => "admin.testProjects.update",
-            "destroy" => "admin.testProjects.destroy",
+            "index" => "admin.test-projects.index",
+            "show" => "admin.test-projects.show",
+            "create" => "admin.test-projects.create",
+            "store" => "admin.test-projects.store",
+            "edit" => "admin.test-projects.edit",
+            "update" => "admin.test-projects.update",
+            "destroy" => "admin.test-projects.destroy",
         ]);
 
     Route::resource(
         "test-projects.tags",
-        TestProjectController::class
-    );
+        TestProjectTagController::class
+    )
+        ->names([
+            "index" => "admin.test-projects.tags.index",
+            "show" => "admin.test-projects.tags.show",
+            "create" => "admin.test-projects.tags.create",
+            "store" => "admin.test-projects.tags.store",
+            "edit" => "admin.test-projects.tags.edit",
+            "update" => "admin.test-projects.tags.update",
+            "destroy" => "admin.test-projects.tags.destroy",
+        ]);
 });

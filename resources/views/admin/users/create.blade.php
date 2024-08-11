@@ -18,7 +18,7 @@
         <form
             action="{{ route("admin.users.store") }}"
             method="post"
-            class="max-w-xl animate-fadein"
+            class="max-w-xl"
         >
             @csrf
 

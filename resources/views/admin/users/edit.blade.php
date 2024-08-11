@@ -18,7 +18,7 @@
         <form
             action="{{ route("admin.users.update", [ "user" => $user ]) }}"
             method="post"
-            class="max-w-xl animate-fadein"
+            class="max-w-xl"
         >
             @csrf
             @method("PUT")

@@ -14,12 +14,7 @@
             </x-admin.container-subtitle>
         </x-slot:subtitle>
 
-        <div
-            @class([
-                "max-w-fit mx-auto",
-                "animate-fadein" => !request()->has("page")
-            ])
-        >
+        <div @class([ "max-w-fit" ])>
             <x-admin.users.filter/>
             <x-admin.operations.container :text="__('Operations')">
                 <x-admin.operations.route

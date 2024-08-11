@@ -17,7 +17,7 @@
 
         <form
             method="post"
-            action="{{ route("admin.testProjects.destroy", [
+            action="{{ route("admin.test-projects.destroy", [
                 "test_project" => $testProject
             ]) }}"
         >

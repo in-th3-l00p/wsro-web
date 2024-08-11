@@ -5,7 +5,7 @@
         :title="__('Test projects trash')"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
-            [ 'href' => route('admin.testProjects.index'), 'name' => __('Test projects') ],
+            [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
             [ 'name' => __('Trash')],
         ]"
     >
@@ -17,7 +17,7 @@
 
         <section @class([
             "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-            "gap-16 max-w-fit mx-auto",
+            "gap-16 max-w-fit",
         ])>
             @forelse($testProjects as $testProject)
                 <x-admin.test-projects.trashed-test-project-display

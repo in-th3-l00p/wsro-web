@@ -14,14 +14,14 @@ class TestProjectController extends Controller
 {
     public function index() {
         Gate::authorize("viewAny", TestProject::class);
-        return view("admin.testProjects.index", [
+        return view("admin.test-projects.index", [
             "testProjects" => TestProject::query()->paginate(TEST_PROJECTS_PER_PAGE)
         ]);
     }
 
     public function create() {
         Gate::authorize("create", TestProject::class);
-        return view("admin.testProjects.create");
+        return view("admin.test-projects.create");
     }
 
     public function store(TestProjectRequest $request) {
@@ -30,21 +30,21 @@ class TestProjectController extends Controller
             "owner_id" => Auth::user()->id
         ]);
 
-        return redirect()->route("admin.testProjects.show", [
+        return redirect()->route("admin.test-projects.show", [
             "test_project" => $testProject
         ]);
     }
 
     public function show(TestProject $testProject) {
         Gate::authorize("view", $testProject);
-        return view("admin.testProjects.show", [
+        return view("admin.test-projects.show", [
             "testProject" => $testProject
         ]);
     }
 
     public function edit(TestProject $testProject) {
         Gate::authorize("update", $testProject);
-        return view("admin.testProjects.edit", [
+        return view("admin.test-projects.edit", [
             "testProject" => $testProject
         ]);
     }
@@ -54,14 +54,14 @@ class TestProjectController extends Controller
         TestProject $testProject
     ) {
         $testProject->update($request->all());
-        return view("admin.testProjects.show", [
+        return view("admin.test-projects.show", [
             "testProject" => $testProject
         ]);
     }
 
     public function delete(TestProject $testProject) {
         Gate::authorize("delete", $testProject);
-        return view("admin.testProjects.delete", [
+        return view("admin.test-projects.delete", [
             "testProject" => $testProject
         ]);
     }
@@ -70,13 +70,13 @@ class TestProjectController extends Controller
         Gate::authorize("delete", $testProject);
         $testProject->delete();
         return redirect()
-            ->route("admin.testProjects.index")
+            ->route("admin.test-projects.index")
             ->with([ "success" => "Test project deleted!" ]);
     }
 
     public function trash() {
         Gate::authorize("viewTrashed", TestProject::class);
-        return view("admin.testProjects.trash", [
+        return view("admin.test-projects.trash", [
             "testProjects" => TestProject::onlyTrashed()
                 ->paginate(TEST_PROJECTS_PER_PAGE)
         ]);
@@ -85,7 +85,7 @@ class TestProjectController extends Controller
     public function restore(TestProject $testProject) {
         Gate::authorize("restore", $testProject);
         $testProject->restore();
-        return redirect()->route("admin.testProjects.show", [
+        return redirect()->route("admin.test-projects.show", [
             "test_project" => $testProject
         ]);
     }

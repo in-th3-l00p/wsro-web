@@ -22,7 +22,7 @@
     <div class="flex gap-4">
         <form
             method="post"
-            action="{{ route("admin.testProjects.restore", [
+            action="{{ route("admin.test-projects.restore", [
                 "test_project" => $testProject
             ]) }}"
         >
