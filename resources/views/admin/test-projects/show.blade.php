@@ -71,7 +71,7 @@
 
                     <form
                         method="post"
-                        action="{{ route("admin.test-projects.tags.destroy", [
+                        action="{{ route("admin.test-projects.tags.destroyBatch", [
                             "test_project" => $testProject
                         ]) }}"
                     >

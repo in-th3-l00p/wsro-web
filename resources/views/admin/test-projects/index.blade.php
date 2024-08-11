@@ -34,8 +34,8 @@
             </x-admin.operations.container>
 
             <section @class([
-                "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-                "gap-16 max-w-fit",
+                "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16",
+                "max-w-fit" => $testProjects->count() > 0,
             ])>
                 @forelse($testProjects as $testProject)
                     <x-admin.test-projects.test-project-display

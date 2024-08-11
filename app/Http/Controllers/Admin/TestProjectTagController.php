@@ -42,11 +42,10 @@ class TestProjectTagController extends Controller
 
     }
 
-    // not implemented
-    public function show(
-        TestProject $testProject,
-        TestProjectTag $testProjectTag
-    ) {
+    public function show(TestProjectTag $tag) {
+        return view("admin.test-projects.tags.show", [
+            "tag" => $tag
+        ]);
     }
 
     // not implemented
@@ -65,7 +64,30 @@ class TestProjectTagController extends Controller
 
     }
 
-    public function destroy(Request $request, TestProject $testProject) {
+    public function destroy(
+        TestProject $testProject,
+        TestProjectTag $tag
+    ) {
+        $testProject->tags()->detach($tag);
+        if ($tag->testProjects()->count() === 0) {
+            $tag->delete();
+            return redirect()
+                ->route("admin.test-projects.tags.index")
+                ->with([
+                    "success" => __("Tag removed!"),
+                    "info" => __("You were redirect as there were no more test projects associated with that tag.")
+                ]);
+        }
+
+        return redirect()
+            ->back()
+            ->with([ "success" => __("Tag removed!") ]);
+    }
+
+    public function destroyBatch(
+        Request $request,
+        TestProject $testProject
+    ) {
         $testProject->tags()->detach($request->tags);
         foreach ($request->tags as $tagId) {
             $tag = TestProjectTag::findOrFail($tagId);
@@ -81,4 +103,5 @@ class TestProjectTagController extends Controller
             "success" => __($message)
         ]);
     }
+
 }

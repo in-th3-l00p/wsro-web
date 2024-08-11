@@ -37,5 +37,9 @@
             <i class="fa-solid fa-eye"></i>
             Open
         </a>
+
+        @if (isset($buttons))
+            {{ $buttons }}
+        @endif
     </div>
 </div>
