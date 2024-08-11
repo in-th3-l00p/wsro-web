@@ -57,6 +57,11 @@ Route::prefix("/admin")->group(function () {
             "destroy" => "admin.test-projects.destroy",
         ]);
 
+    Route::delete(
+        "/admin/test-projects/{test_project}/tags",
+        [TestProjectTagController::class, "destroy"]
+    )
+        ->name("admin.test-projects.tags.destroy");
     Route::resource(
         "test-projects.tags",
         TestProjectTagController::class
@@ -68,6 +73,5 @@ Route::prefix("/admin")->group(function () {
             "store" => "admin.test-projects.tags.store",
             "edit" => "admin.test-projects.tags.edit",
             "update" => "admin.test-projects.tags.update",
-            "destroy" => "admin.test-projects.tags.destroy",
         ]);
 });

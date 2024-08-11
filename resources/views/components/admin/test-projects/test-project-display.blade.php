@@ -9,7 +9,7 @@
     @if ($testProject->tags()->count() > 0)
         <div class="flex flex-wrap gap-2">
             @foreach ($testProject->tags()->get() as $tag)
-                <x-admin.test-projects.tag-display :tag="$tag" />
+                <a href="#" class="tag">{{ $tag->name }}</a>
             @endforeach
         </div>
     @endif

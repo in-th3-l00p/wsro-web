@@ -34,23 +34,86 @@
             </x-admin.operations.container>
         </x-slot:subtitle>
 
-        <div>
+        <section>
             <h2 class="text-3xl font-bold mb-4">
                 {{ __("Tags") }}
             </h2>
-            <div class="flex flex-wrap gap-2">
-                @foreach ($testProject->tags()->get() as $tag)
-                    <x-admin.test-projects.tag-display :tag="$tag" />
-                @endforeach
-                <a
-                    href="{{ route("admin.test-projects.tags.create", [
+            <div x-data="selection">
+                <div class="flex flex-wrap gap-2 mb-4">
+                    @foreach ($testProject->tags()->get() as $tag)
+                        <button
+                            type="button"
+                            class="tag"
+                            @click="toggle({{ $tag->id }})"
+                            x-bind:class="check({{ $tag->id }}) ? 'tag-toggled' : ''"
+                        >
+                            {{ $tag->name }}
+                        </button>
+                    @endforeach
+                    <a
+                        href="{{ route("admin.test-projects.tags.create", [
+                                "test_project" => $testProject
+                            ]) }}"
+                        class="tag !px-8"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                    </a>
+                </div>
+
+                <div
+                    x-show="!empty()"
+                    class="flex items-center gap-4"
+                >
+                    <p>
+                        <span x-text="selected.length"></span>
+                        items selected
+                    </p>
+
+                    <form
+                        method="post"
+                        action="{{ route("admin.test-projects.tags.destroy", [
                             "test_project" => $testProject
                         ]) }}"
-                    class="tag !px-8"
-                >
-                    <i class="fa-solid fa-plus"></i>
-                </a>
+                    >
+                        @csrf
+                        @method("DELETE")
+
+                        <template x-for="id in selected">
+                            <input
+                                type="hidden" aria-hidden="true"
+                                id="tag" name="tags[]"
+                                x-bind:value="id"
+                            >
+                        </template>
+
+                        <button type="submit" class="icon-btn">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
     </x-admin.container>
+
+    <script defer>
+        document.addEventListener("alpine:init", () => {
+            Alpine.data("selection", () => ({
+                selected: [],
+                toggle(id) {
+                    const index = this.selected.indexOf(id);
+                    if (index !== -1) {
+                        this.selected.splice(index, 1);
+                    } else {
+                        this.selected.push(id);
+                    }
+                },
+                check(id) {
+                    return this.selected.indexOf(id) !== -1;
+                },
+                empty() {
+                    return this.selected.length === 0;
+                }
+            }))
+        })
+    </script>
 @endsection

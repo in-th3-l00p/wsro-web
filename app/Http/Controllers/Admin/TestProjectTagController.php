@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\TestProject;
 use App\Models\TestProjectTag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TestProjectTagController extends Controller
 {
+    // not implemented
     public function index(TestProject $testProject) {
     }
 
@@ -38,28 +40,43 @@ class TestProjectTagController extends Controller
 
     }
 
+    // not implemented
     public function show(
         TestProject $testProject,
         TestProjectTag $testProjectTag
     ) {
     }
 
+    // not implemented
     public function edit(
         TestProject $testProject,
         TestProjectTag $testProjectTag
     ) {
     }
 
+    // not implemented
     public function update(
         Request $request,
         TestProject $testProject,
         TestProjectTag $testProjectTag
     ) {
+
     }
 
-    public function destroy(
-        TestProject $testProject,
-        TestProjectTag $testProjectTag
-    ) {
+    public function destroy(Request $request, TestProject $testProject) {
+        $testProject->tags()->detach($request->tags);
+        foreach ($request->tags as $tagId) {
+            $tag = TestProjectTag::findOrFail($tagId);
+            if ($tag->testProjects()->count() === 0)
+                $tag->delete();
+        }
+
+        $message = "Tag";
+        if (sizeof($request->tags) > 1)
+            $message = Str::plural($message);
+        $message = $message . " removed!";
+        return back()->with([
+            "success" => __($message)
+        ]);
     }
 }
