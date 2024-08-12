@@ -88,7 +88,7 @@
         </div>
 
         @if ($users->count() === 0)
-            <p class="text-center text-zinc-600 text-lg">
+            <p class="empty-text">
                 {{ __("No users found.") }}
             </p>
         @endif

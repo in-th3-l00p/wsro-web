@@ -27,7 +27,7 @@
                         {{ $tag->name }}
                     </a>
                 @empty
-                    <div @class([ "w-full text-center text-zinc-600 text-lg" ])>
+                    <div class="w-full empty-text">
                         {{ __("No tags found.") }}
                     </div>
                 @endforelse

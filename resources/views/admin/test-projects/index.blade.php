@@ -43,9 +43,9 @@
                     />
                 @empty
                     <div @class([
-                    "sm:col-span-2 md:col-span-3 lg:col-span-4",
-                    "text-center text-zinc-600 text-lg"
-                ])>
+                        "sm:col-span-2 md:col-span-3 lg:col-span-4",
+                        "empty-text"
+                    ])>
                         {{ __("No test projects found.") }}
                     </div>
                 @endforelse

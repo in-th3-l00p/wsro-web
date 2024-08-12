@@ -6,7 +6,7 @@
             @if ($breadcrumbPath)
                 <x-ui.breadcrumbs :path="$breadcrumbPath" />
             @endif
-            <h1 class="text-5xl font-bold">{{ $title }}</h1>
+            <h1 class="page-title">{{ $title }}</h1>
             @if (isset($subtitle))
                 {{ $subtitle  }}
             @endif

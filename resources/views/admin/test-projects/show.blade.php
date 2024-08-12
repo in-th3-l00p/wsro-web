@@ -35,7 +35,7 @@
         </x-slot:subtitle>
 
         <section>
-            <h2 class="text-3xl font-bold mb-4">
+            <h2 class="section-title">
                 {{ __("Tags") }}
             </h2>
             <div x-data="selection">
@@ -92,28 +92,29 @@
                     </form>
                 </div>
             </div>
+
+            <!-- used for tag selection functionality !-->
+            <script defer>
+                document.addEventListener("alpine:init", () => {
+                    Alpine.data("selection", () => ({
+                        selected: [],
+                        toggle(id) {
+                            const index = this.selected.indexOf(id);
+                            if (index !== -1) {
+                                this.selected.splice(index, 1);
+                            } else {
+                                this.selected.push(id);
+                            }
+                        },
+                        check(id) {
+                            return this.selected.indexOf(id) !== -1;
+                        },
+                        empty() {
+                            return this.selected.length === 0;
+                        }
+                    }))
+                })
+            </script>
         </section>
     </x-admin.container>
-
-    <script defer>
-        document.addEventListener("alpine:init", () => {
-            Alpine.data("selection", () => ({
-                selected: [],
-                toggle(id) {
-                    const index = this.selected.indexOf(id);
-                    if (index !== -1) {
-                        this.selected.splice(index, 1);
-                    } else {
-                        this.selected.push(id);
-                    }
-                },
-                check(id) {
-                    return this.selected.indexOf(id) !== -1;
-                },
-                empty() {
-                    return this.selected.length === 0;
-                }
-            }))
-        })
-    </script>
 @endsection
