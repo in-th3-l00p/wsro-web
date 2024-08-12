@@ -18,8 +18,7 @@ class TestProjectAttachmentPolicy {
         $visibility =
             $attachment
                 ->testProject()
-                ->get("visiblity")
-                ->visibility;
+                ->get("visiblity")[0];
         if ($visibility !== "public" && $user->role !== "admin")
             return Response::denyAsNotFound();
         return Response::allow();
