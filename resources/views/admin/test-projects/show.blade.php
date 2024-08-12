@@ -116,5 +116,19 @@
                 })
             </script>
         </section>
+
+        <section>
+            <h2 class="section-title">{{ __("Attachments") }}</h2>
+
+            <div class="flex flex-wrap gap-8">
+                @forelse ($testProject->attachments()->get() as $attachment)
+                    <x-admin.test-projects.attachment
+                        :attachment="$attachment"
+                    />
+                @empty
+                    <p class="empty-text">{{ __("There are no attachments") }}</p>
+                @endforelse
+            </div>
+        </section>
     </x-admin.container>
 @endsection
