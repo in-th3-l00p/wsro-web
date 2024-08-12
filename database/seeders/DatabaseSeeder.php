@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\TestProject;
+use App\Models\TestProjectAttachment;
 use App\Models\TestProjectTag;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -39,5 +40,10 @@ class DatabaseSeeder extends Seeder {
                     ->attach($tags[$i]->id);
             }
         }
+
+        // test project attachments
+        foreach (TestProject::all() as $testProject)
+            TestProjectAttachment::factory(rand(0, 4))
+                ->create([ "test_project_id" => $testProject->id ]);
     }
 }
