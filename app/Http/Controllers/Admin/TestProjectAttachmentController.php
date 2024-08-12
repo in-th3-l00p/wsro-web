@@ -35,8 +35,17 @@ class TestProjectAttachmentController extends Controller {
     ) {
         Gate::authorize("create", TestProjectAttachment::class);
         $request->validate([
-            "file" => ["required", File::default()->max("5mb")]
+            "name" => "required|max:255",
+            "file" => ["required", File::default()]
         ]);
+
+        if ($testProject
+            ->attachments()
+            ->where("name", "=", $request->name)
+            ->count() !== 0)
+            return back()->withErrors([
+                "name" => __("The name field should be unique within the text project.")
+            ]);
 
         $attachment = TestProjectAttachment::create([
             "name" => $request->file("file")->getClientOriginalName(),
@@ -143,7 +152,7 @@ class TestProjectAttachmentController extends Controller {
         Gate::authorize("viewAny", TestProjectAttachment::class);
         return view("admin.test-projects.attachments.trash", [
             "testProject" => $testProject,
-            "attachments" => TestProjectAttachment::withTrashed()
+            "attachments" => TestProjectAttachment::onlyTrashed()
                 ->where("test_project_id", "=", $testProject->id)
                 ->latest()
                 ->get()

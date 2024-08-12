@@ -31,7 +31,10 @@
 
         <x-admin.operations.route
             :title="__('Delete')"
-            href="#"
+            :href="route('admin.test-projects.attachments.delete', [
+                'test_project' => $attachment->test_project_id,
+                'attachment' => $attachment
+            ])"
             icon="fa-trash"
         />
     </x-admin.operations.container>
