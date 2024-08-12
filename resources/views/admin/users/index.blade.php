@@ -16,7 +16,10 @@
 
         <div @class([ "max-w-fit" ])>
             <x-admin.users.filter/>
-            <x-admin.operations.container :text="__('Operations')">
+            <x-admin.operations.container
+                :text="__('Operations')"
+                class="mb-4"
+            >
                 <x-admin.operations.route
                     :title="__('Create user')"
                     :href="route('admin.users.create')"

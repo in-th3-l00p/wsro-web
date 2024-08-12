@@ -15,7 +15,7 @@
         </x-slot:subtitle>
 
         <section @class(["max-w-fit" => $testProjects->count() > 0])>
-            <x-admin.operations.container>
+            <x-admin.operations.container class="mb-4">
                 <x-admin.operations.route
                     :title="__('Create test project')"
                     :href="route('admin.test-projects.create')"

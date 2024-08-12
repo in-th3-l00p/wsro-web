@@ -16,15 +16,13 @@
             </div>
 
             <x-admin.operations.container>
-                <x-admin.operations.container>
-                    <x-admin.operations.route
-                        :title="__('Edit tag')"
-                        :href="route('admin.test-projects.tags.edit', [
-                            'tag' => $tag
-                        ])"
-                        icon="fa-pen-to-square"
-                    />
-                </x-admin.operations.container>
+                <x-admin.operations.route
+                    :title="__('Edit tag')"
+                    :href="route('admin.test-projects.tags.edit', [
+                        'tag' => $tag
+                    ])"
+                    icon="fa-pen-to-square"
+                />
             </x-admin.operations.container>
         </x-slot:subtitle>
 

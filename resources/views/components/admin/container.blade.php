@@ -12,7 +12,6 @@
             @endif
         </header>
 
-
         {{ $slot }}
     </section>
 </main>

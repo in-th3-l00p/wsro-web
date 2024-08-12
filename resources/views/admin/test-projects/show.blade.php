@@ -34,7 +34,7 @@
             </x-admin.operations.container>
         </x-slot:subtitle>
 
-        <section>
+        <section class="mb-8">
             <h2 class="section-title">
                 {{ __("Tags") }}
             </h2>
