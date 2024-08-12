@@ -73,7 +73,10 @@ class TestProjectAttachmentController extends Controller {
         TestProjectAttachment $attachment
     ) {
         Gate::authorize("view", $attachment);
-        return Storage::download($attachment->path);
+        return Storage::download(
+            $attachment->path,
+            $attachment->name
+        );
     }
 
     public function edit(
