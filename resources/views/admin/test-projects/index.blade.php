@@ -14,7 +14,7 @@
             </x-admin.container-subtitle>
         </x-slot:subtitle>
 
-        <div @class(["max-w-fit" => $testProjects->count() > 0])>
+        <section @class(["max-w-fit" => $testProjects->count() > 0])>
             <x-admin.operations.container>
                 <x-admin.operations.route
                     :title="__('Create test project')"
@@ -33,7 +33,7 @@
                 />
             </x-admin.operations.container>
 
-            <section
+            <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16"
             >
                 @forelse($testProjects as $testProject)
@@ -45,7 +45,7 @@
                         {{ __("No test projects found.") }}
                     </div>
                 @endforelse
-            </section>
-        </div>
+            </div>
+        </section>
     </x-admin.container>
 @endsection
