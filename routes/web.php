@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TestProjectAttachmentController;
 use App\Http\Controllers\Admin\TestProjectController;
 use App\Http\Controllers\Admin\TestProjectTagController;
 use App\Http\Controllers\Admin\UserController;
@@ -22,6 +23,7 @@ Route::prefix("/admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, "dashboard"])
         ->name("admin.dashboard");
 
+    // users
     Route::get("/users/delete/{user}", [UserController::class, "delete"])
         ->name("admin.users.delete");
     Route::get("/users/trash", [UserController::class, "trash"])
@@ -39,6 +41,7 @@ Route::prefix("/admin")->group(function () {
         "destroy" => "admin.users.destroy",
     ]);
 
+    // test projects
     Route::get("/test-projects/delete/{test_project}", [TestProjectController::class, "delete"])
         ->name("admin.test-projects.delete");
     Route::get("/test-projects/trash", [TestProjectController::class, "trash"])
@@ -57,6 +60,7 @@ Route::prefix("/admin")->group(function () {
             "destroy" => "admin.test-projects.destroy",
         ]);
 
+    // test project tags
     Route::delete(
         "/test-projects/{test_project}/tags",
         [TestProjectTagController::class, "destroyBatch"]
@@ -80,5 +84,38 @@ Route::prefix("/admin")->group(function () {
             "create" => "admin.test-projects.tags.create",
             "store" => "admin.test-projects.tags.store",
             "destroy" => "admin.test-projects.tags.destroy"
+        ]);
+
+    // test project attachments
+    Route::prefix("/test-projects/{test_project}")->group(function () {
+        Route::get(
+            "/attachments/delete/{attachment}",
+            [TestProjectAttachmentController::class, "delete"]
+        )
+            ->name("admin.test-projects.attachments.delete");
+        Route::get(
+            "/attachments/trash",
+            [TestProjectAttachmentController::class, "trash"]
+        )
+            ->name("admin.test-projects.attachments.trash");
+        Route::put(
+            "/attachments/restore/{attachment}",
+            [TestProjectAttachmentController::class, "restore"]
+        )
+            ->withTrashed()
+            ->name("admin.test-projects.attachments.restore");
+    });
+    Route::resource(
+        "test-projects.attachments",
+        TestProjectAttachmentController::class
+    )
+        ->names([
+            "index" => "admin.test-projects.attachments.index",
+            "show" => "admin.test-projects.attachments.show",
+            "create" => "admin.test-projects.attachments.create",
+            "store" => "admin.test-projects.attachments.store",
+            "edit" => "admin.test-projects.attachments.edit",
+            "update" => "admin.test-projects.attachments.update",
+            "destroy" => "admin.test-projects.attachments.destroy",
         ]);
 });

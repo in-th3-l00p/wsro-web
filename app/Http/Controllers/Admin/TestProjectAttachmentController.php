@@ -3,64 +3,153 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\TestProject;
 use App\Models\TestProjectAttachment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class TestProjectAttachmentController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+class TestProjectAttachmentController extends Controller {
+    public function index(TestProject $testProject) {
+        return view("admin.test-projects.attachments.index", [
+            "testProject" => $testProject,
+            "attachments" => $testProject
+                ->attachments()
+                ->latest()
+                ->get()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function create(TestProject $testProject) {
+        return view("admin.test-projects.attachments.create", [
+            "testProject" => $testProject
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(
+        TestProject $testProject,
+        Request $request
+    ) {
+        $request->validate([
+            "file" => "required|file|max:5mb"
+        ]);
+
+        $attachment = TestProjectAttachment::create([
+            "name" => $request->file()->get(),
+            "path" => "",
+            "test_project_id" => $testProject->id
+        ]);
+        $path =  Storage::put(
+            "$testProject->id/$attachment->id",
+            $request->file()
+        );
+        $attachment->update([
+            "path" => $path
+        ]);
+        return redirect()
+            ->route("admin.test-projects.show", [
+                "test_project" => $testProject
+            ])
+            ->with([
+                "success" => "Attachment added successfully!"
+            ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(TestProjectAttachment $testProjectAttachment)
-    {
-        //
+    public function show(
+        TestProject $testProject,
+        TestProjectAttachment $attachment
+    ) {
+        return Storage::download($attachment->path);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TestProjectAttachment $testProjectAttachment)
-    {
-        //
+    public function edit(
+        TestProject $testProject,
+        TestProjectAttachment $attachment
+    ) {
+        return view("admin.test-projects.attachments.edit", [
+            "testProject" => $testProject,
+            "attachment" => $attachment
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, TestProjectAttachment $testProjectAttachment)
-    {
-        //
+    public function update(
+        Request $request,
+        TestProject $testProject,
+        TestProjectAttachment $attachment
+    ) {
+        $request->validate([
+            "name" => "nullable|string|max:1024",
+            "file" => "nullable|file|max:5mb"
+        ]);
+
+        if ($request->name)
+            $attachment->update([
+                "name" => $request->name
+            ]);
+        if ($request->hasFile("file")) {
+            Storage::delete($attachment->path);
+            $path = Storage::put(
+                "$testProject->id/$attachment->id",
+                $request->file()
+            );
+            $attachment->update([
+                "path" => $path
+            ]);
+        }
+
+        return redirect()
+            ->route("admin.test-projects.show", [
+                "test_project" => $testProject
+            ])
+            ->with([
+                "success" => "Attachment updated successfully!"
+            ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(TestProjectAttachment $testProjectAttachment)
-    {
-        //
+    public function delete(
+        TestProject $testProject,
+        TestProjectAttachment $attachment
+    ) {
+        return view("admin.test-projects.attachments.delete", [
+            "attachment" => $attachment,
+            "testProject" => $testProject
+        ]);
+    }
+
+    public function destroy(
+        TestProject $testProject,
+        TestProjectAttachment $attachment
+    ) {
+        $attachment->delete();
+        return redirect()
+            ->route("admin.test-projects.show", [
+                "test_project" => $testProject
+            ])
+            ->with([
+                "success" => __("Attachment deleted successfully!")
+            ]);
+    }
+
+    public function trash(TestProject $testProject) {
+        return view("admin.test-projects.attachments.trash", [
+            "testProject" => $testProject,
+            "attachments" => TestProjectAttachment::withTrashed()
+                ->where("test_project_id", "=", $testProject->id)
+                ->latest()
+                ->get()
+        ]);
+    }
+
+    public function restore(
+        TestProject $testProject,
+        TestProjectAttachment $attachment
+    ) {
+        $attachment->restore();
+        return redirect()
+            ->route("admin.test-projects.show", [
+                "test_project" => $testProject
+            ])
+            ->with([
+                "success" => "Attachment restored successfully!"
+            ]);
     }
 }
