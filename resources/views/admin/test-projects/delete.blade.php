@@ -5,8 +5,14 @@
         :title="__('Delete test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
-            [ 'href' => route('admin.users.index'), 'name' => __('Users') ],
-            [ 'name' => __('Delete') . ' \'\'' . $testProject->title . '\'\'' ],
+            [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
+            [
+                'href' => route('admin.test-projects.show', [
+                    'test_project' => $testProject
+                ]),
+                'name' => __('Test project') . ' \'\'' . $testProject->title . '\'\''
+            ],
+            [ 'name' => __('Delete') ],
         ]"
     >
         <x-slot:subtitle>

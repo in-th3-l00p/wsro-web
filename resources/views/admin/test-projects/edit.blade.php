@@ -6,7 +6,13 @@
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
-            [ 'name' => __('Edit') . ' \'\'' . $testProject->title . '\'\'' ],
+            [
+                'href' => route('admin.test-projects.show', [
+                    'test_project' => $testProject
+                ]),
+                'name' => __('Test project') . ' \'\'' . $testProject->title . '\'\''
+            ],
+            [ 'name' => __('Edit') ],
         ]"
     >
         <x-slot:subtitle>
