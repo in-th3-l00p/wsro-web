@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\TestProject;
 use App\Models\TestProjectAttachment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class TestProjectAttachmentController extends Controller {
     public function index(TestProject $testProject) {
+        Gate::authorize("viewAny", TestProjectAttachment::class);
         return view("admin.test-projects.attachments.index", [
             "testProject" => $testProject,
             "attachments" => $testProject
@@ -20,6 +22,7 @@ class TestProjectAttachmentController extends Controller {
     }
 
     public function create(TestProject $testProject) {
+        Gate::authorize("create", TestProjectAttachment::class);
         return view("admin.test-projects.attachments.create", [
             "testProject" => $testProject
         ]);
@@ -29,6 +32,7 @@ class TestProjectAttachmentController extends Controller {
         TestProject $testProject,
         Request $request
     ) {
+        Gate::authorize("create", TestProjectAttachment::class);
         $request->validate([
             "file" => "required|file|max:5mb"
         ]);
@@ -58,6 +62,7 @@ class TestProjectAttachmentController extends Controller {
         TestProject $testProject,
         TestProjectAttachment $attachment
     ) {
+        Gate::authorize("view", $attachment);
         return Storage::download($attachment->path);
     }
 
@@ -65,6 +70,7 @@ class TestProjectAttachmentController extends Controller {
         TestProject $testProject,
         TestProjectAttachment $attachment
     ) {
+        Gate::authorize("update", $attachment);
         return view("admin.test-projects.attachments.edit", [
             "testProject" => $testProject,
             "attachment" => $attachment
@@ -76,6 +82,7 @@ class TestProjectAttachmentController extends Controller {
         TestProject $testProject,
         TestProjectAttachment $attachment
     ) {
+        Gate::authorize("update", $attachment);
         $request->validate([
             "name" => "nullable|string|max:1024",
             "file" => "nullable|file|max:5mb"
@@ -109,6 +116,7 @@ class TestProjectAttachmentController extends Controller {
         TestProject $testProject,
         TestProjectAttachment $attachment
     ) {
+        Gate::authorize("delete", $attachment);
         return view("admin.test-projects.attachments.delete", [
             "attachment" => $attachment,
             "testProject" => $testProject
@@ -119,6 +127,7 @@ class TestProjectAttachmentController extends Controller {
         TestProject $testProject,
         TestProjectAttachment $attachment
     ) {
+        Gate::authorize("delete", $attachment);
         $attachment->delete();
         return redirect()
             ->route("admin.test-projects.show", [
@@ -130,6 +139,7 @@ class TestProjectAttachmentController extends Controller {
     }
 
     public function trash(TestProject $testProject) {
+        Gate::authorize("viewAny", TestProjectAttachment::class);
         return view("admin.test-projects.attachments.trash", [
             "testProject" => $testProject,
             "attachments" => TestProjectAttachment::withTrashed()
@@ -143,6 +153,7 @@ class TestProjectAttachmentController extends Controller {
         TestProject $testProject,
         TestProjectAttachment $attachment
     ) {
+        Gate::authorize("restore", $attachment);
         $attachment->restore();
         return redirect()
             ->route("admin.test-projects.show", [
