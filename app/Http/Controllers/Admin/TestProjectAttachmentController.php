@@ -8,6 +8,7 @@ use App\Models\TestProjectAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\File;
 
 class TestProjectAttachmentController extends Controller {
     public function index(TestProject $testProject) {
@@ -34,17 +35,17 @@ class TestProjectAttachmentController extends Controller {
     ) {
         Gate::authorize("create", TestProjectAttachment::class);
         $request->validate([
-            "file" => "required|file|max:5mb"
+            "file" => ["required", File::default()->max("5mb")]
         ]);
 
         $attachment = TestProjectAttachment::create([
-            "name" => $request->file()->get(),
+            "name" => $request->file("file")->getClientOriginalName(),
             "path" => "",
             "test_project_id" => $testProject->id
         ]);
         $path =  Storage::put(
             "$testProject->id/$attachment->id",
-            $request->file()
+            $request->file("file")
         );
         $attachment->update([
             "path" => $path

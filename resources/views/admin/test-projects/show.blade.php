@@ -117,43 +117,11 @@
             </script>
         </section>
 
-        <section>
-            <h2 class="section-title">{{ __("Attachments") }}</h2>
-
-            <x-admin.operations.container class="mb-4">
-                <x-admin.operations.route
-                    :title="__('Add')"
-                    :href="route('admin.test-projects.attachments.create', [
-                        'test_project' => $testProject
-                    ])"
-                    icon="fa-plus"
-                />
-
-                <x-admin.operations.route
-                    :title="__('Show only attachments')"
-                    :href="route('admin.test-projects.attachments.index', [
-                        'test_project' => $testProject
-                    ])"
-                    icon="fa-eye"
-                />
-
-                <x-admin.operations.route
-                    :title="__('Trash')"
-                    :href="route('admin.test-projects.attachments.trash', [
-                        'test_project' => $testProject
-                    ])"
-                    icon="fa-trash"
-                />
-            </x-admin.operations.container>
-            <div class="flex flex-wrap gap-8">
-                @forelse ($testProject->attachments()->get() as $attachment)
-                    <x-admin.test-projects.attachment
-                        :attachment="$attachment"
-                    />
-                @empty
-                    <p class="empty-text">{{ __("There are no attachments") }}</p>
-                @endforelse
-            </div>
-        </section>
+        <x-admin.test-projects.attachments.attachment-list
+            :testProject="$testProject"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :includeTitle="true"
+            :includeIndex="true"
+        />
     </x-admin.container>
 @endsection

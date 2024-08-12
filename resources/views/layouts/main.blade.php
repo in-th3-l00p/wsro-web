@@ -12,7 +12,7 @@
         "resources/scss/app.scss",
         "resources/js/app.js"
     ])
-    @stack("styles")
+    @stack("vite")
 </head>
 <body>
     @yield("content")
