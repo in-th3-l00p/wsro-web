@@ -1,3 +1,7 @@
+@push("vite")
+    @vite([ "resources/scss/components/attachment.scss" ])
+@endpush
+
 <section>
     @if ($includeTitle)
         <h2 class="section-title">{{ __("Attachments") }}</h2>
