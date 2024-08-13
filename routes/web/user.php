@@ -24,7 +24,7 @@ Route::resource(
     TestProjectTagController::class,
     [ "as" => "user" ]
 )
-    ->only([ "show" ]);
+    ->only([ "index", "show" ]);
 
 Route::resource(
     "test-projects.attachments",
