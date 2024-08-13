@@ -1,3 +1,7 @@
+@php
+    $role = request()->user()->role;
+@endphp
+
 <div
     type="button"
     @class([
@@ -10,7 +14,7 @@
         <div class="flex flex-wrap gap-2">
             @foreach ($testProject->tags()->get() as $tag)
                 <a
-                    href="{{ route("admin.test-projects.tags.show", [
+                    href="{{ route($role . ".tags.show", [
                         "tag" => $tag
                     ]) }}"
                     class="tag"
@@ -29,7 +33,7 @@
     <div class="flex gap-4">
         <a
             title="{{ __("Open test project") }}"
-            href="{{ route("admin.test-projects.show", [
+            href="{{ route($role . ".test-projects.show", [
                 "test_project" => $testProject
             ]) }}"
             class="btn"

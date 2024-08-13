@@ -44,3 +44,8 @@
         w-8 h-8 p-0
         hover:shadow-md hover:scale-100 bg-rose-700;
 }
+
+.btn-group {
+    @apply
+        w-full flex items-center gap-2 flex-wrap;
+}

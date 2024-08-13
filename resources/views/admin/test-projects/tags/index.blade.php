@@ -20,7 +20,7 @@
                 @forelse($tags as $tag)
                     <a
                         class="tag"
-                        href="{{ route("admin.test-projects.tags.show", [
+                        href="{{ route("admin.tags.show", [
                             "tag" => $tag
                         ]) }}"
                     >

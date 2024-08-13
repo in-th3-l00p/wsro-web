@@ -6,7 +6,7 @@
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
-            [ 'href' => route('admin.test-projects.tags.index'), 'name' => __('Tags')],
+            [ 'href' => route('admin.tags.index'), 'name' => __('Tags')],
             [ 'name' => __('Tag') . ' \'\'' . $tag->name . '\'\'' ]
         ]"
     >
@@ -18,7 +18,7 @@
             <x-admin.operations.container>
                 <x-admin.operations.route
                     :title="__('Edit tag')"
-                    :href="route('admin.test-projects.tags.edit', [
+                    :href="route('admin.tags.edit', [
                         'tag' => $tag
                     ])"
                     icon="fa-pen-to-square"

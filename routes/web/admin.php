@@ -58,10 +58,10 @@ Route::prefix("/admin")->group(function () {
         ->resource("tags", TestProjectTagController::class)
         ->only([ "index", "show", "edit", "update" ])
         ->names([
-            "index" => "admin.test-projects.tags.index",
-            "show" => "admin.test-projects.tags.show",
-            "edit" => "admin.test-projects.tags.edit",
-            "update" => "admin.test-projects.tags.update",
+            "index" => "admin.tags.index",
+            "show" => "admin.tags.show",
+            "edit" => "admin.tags.edit",
+            "update" => "admin.tags.update",
         ]);
     Route::resource(
         "test-projects.tags",

@@ -1,38 +1,20 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-user.layout
         :title="__('Test projects')"
         :breadcrumbPath="[
-            [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
+            [ 'href' => route('user.dashboard'), 'name' => __('Dashboard') ],
             [ 'name' => __('Test projects')],
         ]"
     >
         <x-slot:subtitle>
             <x-ui.layout.subtitle>
-                {{ __("Manage test projects") }}
+                {{ __("Select a test project") }}
             </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
         <div @class(["max-w-fit" => $testProjects->count() > 0])>
-            <x-admin.operations.container class="mb-4">
-                <x-admin.operations.route
-                    :title="__('Create test project')"
-                    :href="route('admin.test-projects.create')"
-                    icon="fa-plus"
-                />
-                <x-admin.operations.route
-                    :title="__('Test project tags')"
-                    :href="route('admin.tags.index')"
-                    icon="fa-tags"
-                />
-                <x-admin.operations.route
-                    :title="__('Test project trash')"
-                    :href="route('admin.test-projects.trash')"
-                    icon="fa-trash"
-                />
-            </x-admin.operations.container>
-
             <section
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-8"
             >
@@ -49,5 +31,5 @@
 
             {{ $testProjects->links() }}
         </div>
-    </x-admin.container>
+    </x-user.layout>
 @endsection

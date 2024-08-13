@@ -6,9 +6,9 @@
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
             [ 'href' => route('admin.test-projects.index'), 'name' => __('Test projects') ],
-            [ 'href' => route('admin.test-projects.tags.index'), 'name' => __('Tags')],
+            [ 'href' => route('admin.tags.index'), 'name' => __('Tags')],
             [
-                'href' => route('admin.test-projects.tags.show', [ 'tag' => $tag ]),
+                'href' => route('admin.tags.show', [ 'tag' => $tag ]),
                 'name' => __('Tag') . ' \'\'' . $tag->name . '\'\''
             ],
             [ 'name' => __('Edit') ]
@@ -21,7 +21,7 @@
         </x-slot:subtitle>
 
         <form
-            action="{{ route("admin.test-projects.tags.update", [
+            action="{{ route("admin.tags.update", [
                 "tag" => $tag
             ]) }}"
             method="post"
