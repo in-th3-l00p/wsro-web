@@ -10,6 +10,8 @@ class IndexController extends Controller {
         Gate::allowIf($request->user());
         if (!$request->user())
             return redirect()->route("login.form");
+        if ($request->user()->role === "admin")
+            return redirect()->route("admin.dashboard");
         return redirect()->route("user.dashboard");
     }
 }
