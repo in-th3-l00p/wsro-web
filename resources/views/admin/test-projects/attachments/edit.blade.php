@@ -26,9 +26,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <x-admin.container-subtitle>
+            <x-ui.layout.subtitle>
                 {{ __("Edit the test project's attachment") }}
-            </x-admin.container-subtitle>
+            </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
         <form

@@ -10,9 +10,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <x-admin.container-subtitle>
+            <x-ui.layout.subtitle>
                 {{ __("Update user's information") }}
-            </x-admin.container-subtitle>
+            </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
         <form

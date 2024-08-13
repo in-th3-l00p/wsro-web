@@ -10,9 +10,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <x-admin.container-subtitle>
+            <x-ui.layout.subtitle>
                 {{ __("Complete the fields related to the test project's data") }}
-            </x-admin.container-subtitle>
+            </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
         <form

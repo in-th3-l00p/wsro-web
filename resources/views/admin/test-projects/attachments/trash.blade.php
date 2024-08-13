@@ -24,9 +24,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <x-admin.container-subtitle>
+            <x-ui.layout.subtitle>
                 {{ __("See all deleted attachments") }}
-            </x-admin.container-subtitle>
+            </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
         <section>

@@ -14,9 +14,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <x-admin.container-subtitle>
+            <x-ui.layout.subtitle>
                 {{ __("Add or create a new tag") }}
-            </x-admin.container-subtitle>
+            </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
         <form

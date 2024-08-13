@@ -10,9 +10,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <div class="mb-4 mt-2">
+            <x-ui.layout.subtitle class="mb-4">
                 {!! $testProject->description !!}
-            </div>
+            </x-ui.layout.subtitle>
 
             <x-admin.operations.container>
                 <x-admin.operations.container>

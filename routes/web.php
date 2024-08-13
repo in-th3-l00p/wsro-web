@@ -1,15 +1,16 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TestProjectAttachmentController;
 use App\Http\Controllers\Admin\TestProjectController;
 use App\Http\Controllers\Admin\TestProjectTagController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
-Route::get("/", IndexController::class);
+Route::get("/", IndexController::class)
+    ->name("index");
 
 Route::get("/login", [AuthController::class, "loginForm"])
     ->name("login.form");
@@ -18,7 +19,14 @@ Route::post("/login", [AuthController::class, "loginSubmit"])
 Route::get("/logout", [AuthController::class, "logout"])
     ->name("logout");
 
+// user related
+Route::get("/dashboard", [
+    \App\Http\Controllers\User\UserController::class,
+    "dashboard"
+])
+    ->name("user.dashboard");
 
+// admin related
 Route::prefix("/admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, "dashboard"])
         ->name("admin.dashboard");

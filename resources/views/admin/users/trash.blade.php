@@ -11,9 +11,9 @@
     >
         <div @class(["max-w-fit"])>
             <x-slot:subtitle>
-                <x-admin.container-subtitle>
+                <x-ui.layout.subtitle>
                     {{ __("All the deleted users") }}
-                </x-admin.container-subtitle>
+                </x-ui.layout.subtitle>
             </x-slot:subtitle>
 
             <x-admin.users.filter />

@@ -11,9 +11,9 @@
         ]"
     >
         <x-slot:subtitle>
-            <div class="mb-4 mt-2">
+            <x-ui.layout.subtitle class="mb-4">
                 {{ __("See test projects that are using the tag, or update it's name") }}
-            </div>
+            </x-ui.layout.subtitle>
 
             <x-admin.operations.container>
                 <x-admin.operations.route

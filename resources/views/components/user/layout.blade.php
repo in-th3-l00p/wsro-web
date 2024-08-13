@@ -1,5 +1,5 @@
 <main class="flex">
-    <x-admin.sidebar />
+    <x-user.sidebar />
 
     <section class="layout-header">
         <header class="mb-8">
