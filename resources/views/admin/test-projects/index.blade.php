@@ -37,7 +37,7 @@
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-8"
             >
                 @forelse($testProjects as $testProject)
-                    <x-admin.test-projects.test-project-display
+                    <x-ui.test-project
                         :testProject="$testProject"
                     />
                 @empty

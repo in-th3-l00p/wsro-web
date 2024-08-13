@@ -36,7 +36,7 @@
             ])
         >
             @forelse ($tag->testProjects()->get() as $testProject)
-                <x-admin.test-projects.test-project-display
+                <x-ui.test-project
                     :testProject="$testProject"
                 >
                     <x-slot:buttons>
@@ -56,7 +56,7 @@
                             </button>
                         </form>
                     </x-slot:buttons>
-                </x-admin.test-projects.test-project-display>
+                </x-ui.test-project>
             @empty
                 <div @class([
                     "w-full sm:col-span-2 md:col-span-3 lg:col-span-4",
