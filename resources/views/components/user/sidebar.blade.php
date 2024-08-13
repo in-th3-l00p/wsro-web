@@ -18,6 +18,13 @@
         {{ __("Dashboard") }}
     </x-ui.sidebar-link>
 
+    <x-ui.sidebar-link
+        route="user.test-projects.index"
+        icon="fa-file"
+    >
+        {{ __("Test projects") }}
+    </x-ui.sidebar-link>
+
     <div
         x-data="{ open: false }"
         class="mt-auto w-full"
