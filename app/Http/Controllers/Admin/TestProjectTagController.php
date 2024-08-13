@@ -73,7 +73,7 @@ class TestProjectTagController extends Controller
         ]);
         $tag->update($body);
         return redirect()
-            ->route("admin.test-projects.tags.show", ["tag" => $tag])
+            ->route("admin.tags.show", ["tag" => $tag])
             ->with([
                 "success" => __("Tag updated successfully!")
             ]);

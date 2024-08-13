@@ -19,15 +19,10 @@ Route::prefix("/admin")->group(function () {
     Route::put("/users/restore/{user}", [UserController::class, "restore"])
         ->withTrashed()
         ->name("admin.users.restore");
-    Route::resource("users", UserController::class)->names([
-        "index" => "admin.users.index",
-        "show" => "admin.users.show",
-        "create" => "admin.users.create",
-        "store" => "admin.users.store",
-        "edit" => "admin.users.edit",
-        "update" => "admin.users.update",
-        "destroy" => "admin.users.destroy",
-    ]);
+    Route::resource(
+        "users",
+        UserController::class, ["as" => "admin"]
+    );
 
     // test projects
     Route::get("/test-projects/delete/{test_project}", [TestProjectController::class, "delete"])
@@ -37,16 +32,11 @@ Route::prefix("/admin")->group(function () {
     Route::put("/test-projects/restore/{test_project}", [TestProjectController::class, "restore"])
         ->withTrashed()
         ->name("admin.test-projects.restore");
-    Route::resource("test-projects", TestProjectController::class)
-        ->names([
-            "index" => "admin.test-projects.index",
-            "show" => "admin.test-projects.show",
-            "create" => "admin.test-projects.create",
-            "store" => "admin.test-projects.store",
-            "edit" => "admin.test-projects.edit",
-            "update" => "admin.test-projects.update",
-            "destroy" => "admin.test-projects.destroy",
-        ]);
+    Route::resource(
+        "test-projects",
+        TestProjectController::class,
+        ["as" => "admin"]
+    );
 
     // test project tags
     Route::delete(
@@ -55,24 +45,18 @@ Route::prefix("/admin")->group(function () {
     )
         ->name("admin.test-projects.tags.destroyBatch");
     Route::prefix("/test-projects")
-        ->resource("tags", TestProjectTagController::class)
-        ->only([ "index", "show", "edit", "update" ])
-        ->names([
-            "index" => "admin.tags.index",
-            "show" => "admin.tags.show",
-            "edit" => "admin.tags.edit",
-            "update" => "admin.tags.update",
-        ]);
+        ->resource(
+            "tags",
+            TestProjectTagController::class,
+            ["as" => "admin"]
+        )
+        ->only([ "index", "show", "edit", "update" ]);
     Route::resource(
         "test-projects.tags",
-        TestProjectTagController::class
+        TestProjectTagController::class,
+        ["as" => "admin"]
     )
-        ->only([ "create", "store", "destroy" ])
-        ->names([
-            "create" => "admin.test-projects.tags.create",
-            "store" => "admin.test-projects.tags.store",
-            "destroy" => "admin.test-projects.tags.destroy"
-        ]);
+        ->only([ "create", "store", "destroy" ]);
 
     // test project attachments
     Route::prefix("/test-projects/{test_project}")->group(function () {
@@ -95,15 +79,7 @@ Route::prefix("/admin")->group(function () {
     });
     Route::resource(
         "test-projects.attachments",
-        TestProjectAttachmentController::class
-    )
-        ->names([
-            "index" => "admin.test-projects.attachments.index",
-            "show" => "admin.test-projects.attachments.show",
-            "create" => "admin.test-projects.attachments.create",
-            "store" => "admin.test-projects.attachments.store",
-            "edit" => "admin.test-projects.attachments.edit",
-            "update" => "admin.test-projects.attachments.update",
-            "destroy" => "admin.test-projects.attachments.destroy",
-        ]);
+        TestProjectAttachmentController::class,
+        ["as" => "admin"]
+    );
 });
