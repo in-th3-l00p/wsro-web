@@ -16,16 +16,19 @@ Route::resource(
     "test-projects",
     TestProjectController::class,
     [ "as" => "user" ]
-);
+)
+    ->only([ "index", "show" ]);
 
 Route::resource(
     "tags",
     TestProjectTagController::class,
     [ "as" => "user" ]
-);
+)
+    ->only([ "show" ]);
 
 Route::resource(
     "test-projects.attachments",
     TestProjectAttachmentController::class,
     [ "as" => "user" ]
-);
+)
+    ->only([ "show" ]);

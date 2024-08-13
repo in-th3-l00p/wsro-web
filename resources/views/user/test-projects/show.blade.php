@@ -55,7 +55,7 @@
                         <div class="btn-group justify-center">
                             <a
                                 title="{{ __('Download') }}"
-                                href="{{ route('admin.test-projects.attachments.show', [
+                                href="{{ route('user.test-projects.attachments.show', [
                                     'test_project' => $attachment->test_project_id,
                                     'attachment' => $attachment
                                 ]) }}"

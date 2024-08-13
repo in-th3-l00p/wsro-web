@@ -13,6 +13,7 @@ class TestProjectController extends Controller {
         Gate::authorize("viewAny", TestProject::class);
         return view("user.test-projects.index", [
             "testProjects" => TestProject::query()
+                ->where("visibility", "=", "public")
                 ->paginate(TEST_PROJECTS_PER_PAGE)
         ]);
     }
