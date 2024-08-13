@@ -32,5 +32,7 @@
                 </div>
             @endforelse
         </section>
+
+        {{ $testProjects->links() }}
     </x-admin.container>
 @endsection
