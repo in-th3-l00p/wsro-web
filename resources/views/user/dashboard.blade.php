@@ -2,6 +2,6 @@
 
 @section("content")
     <x-user.layout :title="__('Dashboard')">
-        <p>hello world</p>
+        <p>fdsafdsagfdsafs</p>
     </x-user.layout>
 @endsection
