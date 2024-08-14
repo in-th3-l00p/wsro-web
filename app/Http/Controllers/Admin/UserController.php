@@ -93,7 +93,17 @@ class UserController extends Controller
             $request->validate([
                 "email" => "unique:users,email"
             ]);
-        $user->update($data);
+        if ($data["name"] !== $user->name)
+            $user->update([
+                "name" => $data["name"]
+            ]);
+        if ($data["email"] !== $user->email)
+            $user->update([
+                "email" => $data["email"]
+            ]);
+        $user->update([
+            "role" => $data["role"]
+        ]);
         return redirect()
             ->route("admin.users.show", [ "user" => $user ])
             ->with([ "success" => "User updated!" ]);
