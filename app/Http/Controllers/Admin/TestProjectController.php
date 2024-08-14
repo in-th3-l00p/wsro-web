@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TestProjectRequest;
 use App\Models\TestProject;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -50,10 +51,26 @@ class TestProjectController extends Controller
     }
 
     public function update(
-        TestProjectRequest $request,
+        Request $request,
         TestProject $testProject
     ) {
-        $testProject->update($request->all());
+        $request->validate([
+            "title" => "required|max:255",
+            "description" => "required|max:1000",
+//            "status" => "required|in:public,private,draft"
+        ]);
+        if ($request->title !== $testProject->title)
+            $testProject->update([
+                "title" => $request->title
+            ]);
+        if ($request->description !== $testProject->description)
+            $testProject->update([
+                "description" => $request->description
+            ]);
+        if ($request->status !== $testProject->status)
+            $testProject->update([
+                "status" => $request->status
+            ]);
         return view("admin.test-projects.show", [
             "testProject" => $testProject
         ]);
