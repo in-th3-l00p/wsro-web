@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
         Paginator::defaultView("vendor.pagination.tailwind");
         Paginator::defaultSimpleView("vendor.pagination.simple-tailwind");
 
+        Gate::define("auth", function (User $user) {
+            return true;
+        });
+
         Gate::define("admin", function (User $user) {
             return $user->role === "admin";
         });
