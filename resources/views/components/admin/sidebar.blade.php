@@ -46,6 +46,12 @@
         </button>
         <nav x-show="open">
             <x-ui.sidebar-link
+                route="account.index"
+                icon="fa-pen-to-square"
+            >
+                {{ __("Profile") }}
+            </x-ui.sidebar-link>
+            <x-ui.sidebar-link
                 route="logout"
                 icon="fa-right-from-bracket"
             >
