@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\TestProjectTag;
+use App\Models\TestProjects\TestProjectTag;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class TestProjectTagPolicy {
     public function viewAny(User $user): bool {

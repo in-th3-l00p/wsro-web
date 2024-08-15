@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\TestProject;
-use App\Models\TestProjectAttachment;
+use App\Models\TestProjects\TestProject;
+use App\Models\TestProjects\TestProjectAttachment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;

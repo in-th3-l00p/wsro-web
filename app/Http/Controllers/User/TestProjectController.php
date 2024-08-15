@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\TestProject;
+use App\Models\TestProjects\TestProject;
 use Illuminate\Support\Facades\Gate;
 
 const TEST_PROJECTS_PER_PAGE = 15;

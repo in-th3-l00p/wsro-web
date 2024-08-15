@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Assignments;
 
+use App\Models\TestProjects\TestProject;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,14 +11,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TestProject extends Model
+class Assignment extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        "title",
+        "name",
         "description",
-        "visibility",
+        "deadline",
         "owner_id"
     ];
 
@@ -24,16 +26,21 @@ class TestProject extends Model
         return $this->belongsTo(User::class, "owner_id");
     }
 
-    public function attachments(): HasMany {
-        return $this->hasMany(TestProjectAttachment::class);
+    public function users(): BelongsToMany {
+        return $this->belongsToMany(
+            User::class,
+            "assignment_user"
+        );
     }
 
-    public function tags(): BelongsToMany {
+    public function testProjects(): BelongsToMany {
         return $this->belongsToMany(
-            TestProjectTag::class,
-            "test_project_test_project_tag",
-            "test_project_id",
-            "test_project_tag_id"
+            TestProject::class,
+            "assignment_test_project"
         );
+    }
+
+    public function attachments(): HasMany {
+        return $this->hasMany(AssignmentAttachment::class);
     }
 }

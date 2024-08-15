@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Assignments;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AssignmentSubmission extends Model
+class AssignmentSubmissionAttachment extends Model
 {
     use HasFactory;
 }
