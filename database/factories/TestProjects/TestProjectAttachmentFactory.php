@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 // demo file array
 const FILES = [
-    "public/demo/Day1-A.docx",
-    "public/demo/Day1-B.docx",
-    "public/demo/Day1-mediafiles.zip",
-    "public/demo/Day2-mediafiles.zip",
-    "public/demo/Day2.docx",
+    "/demo/Day1-A.docx",
+    "/demo/Day1-B.docx",
+    "/demo/Day1-mediafiles.zip",
+    "/demo/Day2-mediafiles.zip",
+    "/demo/Day2.docx",
 ];
 
 /**

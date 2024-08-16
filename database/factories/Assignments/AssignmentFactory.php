@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Assignments;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,10 @@ class AssignmentFactory extends Factory
     public function definition(): array
     {
         return [
-            "name" => fake()->words(),
+            "name" => fake()->sentence(4),
             "description" => fake()->paragraph(),
-            "deadline" => fake()->dateTimeBetween(now(), "+1 month")
+            "deadline" => now(),
+            "owner_id" => User::query()->inRandomOrder()->first()->id
         ];
     }
 }
