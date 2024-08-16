@@ -43,4 +43,15 @@ class Assignment extends Model
     public function attachments(): HasMany {
         return $this->hasMany(AssignmentAttachment::class);
     }
+
+    public function submissions() {
+        return $this->hasManyThrough(
+            AssignmentSubmission::class,
+            "assignment_user",
+            "assignment_id",
+            "assignment_user_id",
+            "id",
+            "id"
+        );
+    }
 }

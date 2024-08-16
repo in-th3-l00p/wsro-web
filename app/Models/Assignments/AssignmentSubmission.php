@@ -4,6 +4,8 @@ namespace App\Models\Assignments;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class AssignmentSubmission extends Model
 {
@@ -15,12 +17,18 @@ class AssignmentSubmission extends Model
         "status"
     ];
 
-    public function assignment() {
+    public function assignment(): HasOneThrough {
         return $this->hasOneThrough(
             Assignment::class,
             "assignment_user",
+            "id",
+            "id",
             "assignment_user_id",
             "assignment_id"
         );
+    }
+
+    public function resources(): HasMany {
+        return $this->hasMany(AssignmentSubmissionResource::class);
     }
 }

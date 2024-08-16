@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class AssignmentSubmissionText extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "text"
+    ];
+
+    public function resource() {
+        return $this->morphOne(
+            AssignmentSubmissionResource::class,
+            "resource"
+        );
+    }
 }

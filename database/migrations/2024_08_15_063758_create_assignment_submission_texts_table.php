@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Assignments\AssignmentSubmission;
+use App\Models\Assignments\AssignmentSubmissionResource;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,8 +19,8 @@ return new class extends Migration
 
             $table->text("text");
 
-            $table->foreignIdFor(AssignmentSubmission::class)
-                ->constrained("assignment_submissions");
+            $table->foreignIdFor(AssignmentSubmissionResource::class)
+                ->constrained("assignment_submission_resources");
         });
     }
 
