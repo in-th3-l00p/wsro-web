@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Assignments;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Assignments\AssignmentSubmissionAttachment>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Assignments\AssignmentAttachment>
  */
-class AssignmentSubmissionAttachmentFactory extends Factory
+class AssignmentAttachmentFactory extends Factory
 {
     /**
      * Define the model's default state.
