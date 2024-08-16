@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Assignments\Assignment;
+use App\Models\Assignments\AssignmentSubmission;
 use App\Models\TestProjects\TestProject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -63,7 +64,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(
             Assignment::class,
-            "assignment_user"
+            "assignment_user",
+            "user_id",
+            "assignment_id"
         );
+    }
+
+    public function submissions() {
+        return $this->hasMany(AssignmentSubmission::class);
     }
 }

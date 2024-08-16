@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Assignments\Assignment;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,8 +22,12 @@ return new class extends Migration
             $table->enum("status", [ "assigned", "turned_in" ]);
 
             $table
-                ->foreignId("assignment_user_id")
-                ->constrained("assignment_user");
+                ->foreignIdFor(User::class)
+                ->constrained("users");
+
+            $table
+                ->foreignIdFor(Assignment::class)
+                ->constrained("assignments");
         });
     }
 

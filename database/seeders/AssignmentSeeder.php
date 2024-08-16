@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Assignments\Assignment;
 use App\Models\Assignments\AssignmentAttachment;
+use App\Models\Assignments\AssignmentSubmission;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,19 +16,15 @@ class AssignmentSeeder extends Seeder
         Assignment::factory(30)->create();
         AssignmentAttachment::factory(60)->create();
 
-        $usersWithAssignments = User::query()
-            ->inRandomOrder()
-            ->limit(User::query()->count() / 2)
-            ->get();
-        foreach ($usersWithAssignments as $user) {
-            $user
-                ->assignedAssignments()
-                ->attach(
-                    Assignment::query()
-                        ->inRandomOrder()
-                        ->limit(rand(0, 5))
-                        ->get()
-                );
+        foreach (Assignment::all() as $assignment) {
+            $assignment
+                ->users()
+                ->attach(User::query()
+                    ->inRandomOrder()
+                    ->limit(rand(1, 3))
+                    ->get());
         }
+
+        AssignmentSubmission::factory(30)->create();
     }
 }

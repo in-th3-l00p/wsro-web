@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Assignments\Assignment;
+use App\Models\Assignments\AssignmentSubmission;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,6 +18,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
+
+            $table
+                ->foreignIdFor(AssignmentSubmission::class)
+                ->nullable()
+                ->constrained("assignment_submissions");
 
             $table
                 ->foreignIdFor(Assignment::class)

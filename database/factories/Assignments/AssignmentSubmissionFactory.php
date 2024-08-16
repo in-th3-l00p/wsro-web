@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Assignments;
 
+use App\Models\Assignments\Assignment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +10,20 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AssignmentSubmissionFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        $assignment = Assignment::query()
+            ->withCount("users")
+            ->inRandomOrder()
+            ->first();
+
         return [
-            //
+            "assignment_id" => $assignment->id,
+            "user_id" => fake()
+                ->randomElement($assignment->users()->get())
+                ->id,
+            "description" => fake()->text(),
+            "status" => fake()->randomElement([ "assigned", "turned_in" ])
         ];
     }
 }

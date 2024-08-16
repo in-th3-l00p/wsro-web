@@ -29,7 +29,9 @@ class Assignment extends Model
     public function users(): BelongsToMany {
         return $this->belongsToMany(
             User::class,
-            "assignment_user"
+            "assignment_user",
+            "assignment_id",
+            "user_id"
         );
     }
 
@@ -45,13 +47,6 @@ class Assignment extends Model
     }
 
     public function submissions() {
-        return $this->hasManyThrough(
-            AssignmentSubmission::class,
-            "assignment_user",
-            "assignment_id",
-            "assignment_user_id",
-            "id",
-            "id"
-        );
+        return $this->hasMany(AssignmentSubmission::class);
     }
 }
