@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Assignments;
 
+use App\Models\Assignments\Assignment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 // demo file array
@@ -25,8 +26,16 @@ class AssignmentAttachmentFactory extends Factory
      */
     public function definition(): array
     {
+        $file = fake()->randomElement(FILES);
+        $exploded = explode("/", $file);
+
         return [
-            //
+            "name" => $exploded[sizeof($exploded) - 1],
+            "path" => $file,
+            "assignment_id" => Assignment::query()
+                ->inRandomOrder()
+                ->first()
+                ->id
         ];
     }
 }

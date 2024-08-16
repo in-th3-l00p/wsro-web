@@ -13,7 +13,7 @@ class AssignmentAttachment extends Model
     protected $fillable = [
         "name",
         "path",
-        "attachment_id"
+        "assignment_id"
     ];
 
     public function assignment(): BelongsTo {
