@@ -21,7 +21,9 @@ class AssignmentFactory extends Factory
             "name" => fake()->sentence(4),
             "description" => fake()->paragraph(),
             "deadline" => now(),
-            "owner_id" => User::query()->inRandomOrder()->first()->id
+            "owner_id" => User::query()->inRandomOrder()->first()->id,
+            "created_at" => now(),
+            "updated_at" => now()
         ];
     }
 }

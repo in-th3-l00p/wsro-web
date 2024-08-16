@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Assignments\Assignment;
 use App\Models\TestProjects\TestProject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,5 +57,13 @@ class User extends Authenticatable
 
     public function assignments(): HasMany {
         return $this->hasMany(Assignment::class, "owner_id");
+    }
+
+    public function assignedAssignments(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Assignment::class,
+            "assignment_user"
+        );
     }
 }
