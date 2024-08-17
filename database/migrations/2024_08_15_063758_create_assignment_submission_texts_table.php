@@ -18,9 +18,6 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->text("text");
-
-            $table->foreignIdFor(AssignmentSubmissionResource::class)
-                ->constrained("assignment_submission_resources");
         });
     }
 

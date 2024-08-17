@@ -19,9 +19,6 @@ return new class extends Migration
 
             $table->string("name");
             $table->string("path");
-
-            $table->foreignIdFor(AssignmentSubmissionResource::class)
-                ->constrained("assignment_submission_resources");
         });
     }
 

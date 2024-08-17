@@ -17,7 +17,9 @@ class AssignmentSubmissionLinkFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "link" => fake()->url(),
+            "created_at" => now(),
+            "updated_at" => now(),
         ];
     }
 }

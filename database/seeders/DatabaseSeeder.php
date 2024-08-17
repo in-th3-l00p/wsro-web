@@ -18,6 +18,5 @@ class DatabaseSeeder extends Seeder {
             TestProjectSeeder::class,
             AssignmentSeeder::class
         ]);
-
     }
 }

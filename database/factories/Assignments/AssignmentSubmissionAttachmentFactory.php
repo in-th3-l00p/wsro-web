@@ -16,8 +16,12 @@ class AssignmentSubmissionAttachmentFactory extends Factory
      */
     public function definition(): array
     {
+        $file = fake()->randomElement(\Database\Factories\TestProjects\FILES);
+        $exploded = explode("/", $file);
+
         return [
-            //
+            "name" => $exploded[sizeof($exploded) - 1],
+            "path" => $file
         ];
     }
 }
