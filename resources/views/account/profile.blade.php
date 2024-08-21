@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-user.layout
         :title="__('User') . ' \'\'' . request()->user()->name . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route(request()->user()->role . '.dashboard'), 'name' => __('Dashboard') ],
@@ -37,5 +37,5 @@
                 <i class="fa-solid fa-key"></i>
             </a>
         </div>
-    </x-admin.container>
+    </x-user.layout>
 @endsection

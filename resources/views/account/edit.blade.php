@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-user.layout
         :title="__('Edit profile')"
         :breadcrumbPath="[
             [ 'href' => route(request()->user()->role . '.dashboard'), 'name' => __('Dashboard') ],
@@ -56,5 +56,5 @@
                 {{ __("Edit") }}
             </button>
         </form>
-    </x-admin.container>
+    </x-user.layout>
 @endsection
