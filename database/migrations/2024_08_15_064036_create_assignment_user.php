@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Assignments\Assignment;
+use App\Models\Assignments\AssignmentSubmission;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,21 +14,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('test_projects', function (Blueprint $table) {
+        Schema::create('assignment_user', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->string("title");
-            $table->text("description");
-            $table->enum(
-                "visibility",
-                ["public", "private"]
-            );
+            $table
+                ->foreignIdFor(AssignmentSubmission::class)
+                ->nullable()
+                ->constrained("assignment_submissions");
 
             $table
-                ->foreignIdFor(User::class, "owner_id")
+                ->foreignIdFor(Assignment::class)
+                ->constrained("assignments");
+
+            $table
+                ->foreignIdFor(User::class)
                 ->constrained("users");
+
         });
     }
 
@@ -35,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('test_projects');
+        Schema::dropIfExists('assignment_user');
     }
 };

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\TestProjects;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,7 +14,7 @@ const FILES = [
 ];
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TestProjectAttachment>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TestProjects\TestProjectAttachment>
  */
 class TestProjectAttachmentFactory extends Factory
 {

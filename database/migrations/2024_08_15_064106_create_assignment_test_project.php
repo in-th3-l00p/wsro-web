@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Assignments\Assignment;
 use App\Models\TestProjects\TestProject;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,16 +13,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('test_project_attachments', function (Blueprint $table) {
+        Schema::create('assignment_test_project', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->string("name");
-            $table->string("path");
+            $table
+                ->foreignIdFor(Assignment::class)
+                ->constrained("assignments");
+
             $table
                 ->foreignIdFor(TestProject::class)
-                ->constrained();
+                ->constrained("test_projects");
         });
     }
 
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('test_project_attachments');
+        Schema::dropIfExists('assignment_test_project');
     }
 };

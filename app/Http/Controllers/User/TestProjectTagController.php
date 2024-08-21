@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\TestProjectTag;
-use Illuminate\Http\Request;
+use App\Models\TestProjects\TestProjectTag;
 use Illuminate\Support\Facades\Gate;
 
 class TestProjectTagController extends Controller

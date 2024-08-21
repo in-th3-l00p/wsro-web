@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\TestProject;
+use App\Models\TestProjects\TestProject;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 

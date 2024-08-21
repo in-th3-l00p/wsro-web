@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\TestProject;
-use App\Models\TestProjectTag;
+use App\Models\TestProjects\TestProject;
+use App\Models\TestProjects\TestProjectTag;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

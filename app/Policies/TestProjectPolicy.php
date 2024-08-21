@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\TestProject;
+use App\Models\TestProjects\TestProject;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 

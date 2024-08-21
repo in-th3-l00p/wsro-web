@@ -9,7 +9,7 @@ use Illuminate\View\Component;
 class TestProject extends Component
 {
     public function __construct(
-        public \App\Models\TestProject $testProject
+        public \App\Models\TestProjects\TestProject $testProject
     ) {
     }
 

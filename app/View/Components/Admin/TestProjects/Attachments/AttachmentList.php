@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Admin\TestProjects\Attachments;
 
-use App\Models\TestProject;
+use App\Models\TestProjects\TestProject;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;

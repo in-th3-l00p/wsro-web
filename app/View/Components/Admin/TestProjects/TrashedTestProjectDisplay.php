@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Admin\TestProjects;
 
-use App\Models\TestProject;
+use App\Models\TestProjects\TestProject;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
