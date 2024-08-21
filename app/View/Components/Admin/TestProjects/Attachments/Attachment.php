@@ -10,8 +10,7 @@ use Illuminate\View\Component;
 class Attachment extends Component
 {
     public function __construct(
-        public TestProjectAttachment $attachment,
-        public ?bool $small = false
+        public TestProjectAttachment $attachment
     ) {
     }
 

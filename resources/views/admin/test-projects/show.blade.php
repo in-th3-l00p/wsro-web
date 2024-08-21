@@ -122,6 +122,15 @@
                 {{ __("Modules") }}
             </h2>
 
+            <x-admin.operations.container class="mb-4">
+                <x-admin.operations.route
+                    :title="__('Create module')"
+                    :href="route('admin.test-projects.modules.create', [
+                        'test_project' => $testProject
+                    ])"
+                    icon="fa-plus"
+                />
+            </x-admin.operations.container>
             <ul role="list" class="divide-y divide-gray-100 bg-white shadow-md rounded-md">
                 @foreach($testProject->modules as $module)
                     <li x-data="{ open: false }" class="py-4 px-8 flex flex-col gap-4">
@@ -161,11 +170,29 @@
 
                         <div class="w-full" x-show="open">
                             <p class="text-sm pb-4 border-b mb-4">{{ $module->description }}</p>
+                            <x-admin.operations.container class="mb-4">
+                                <x-admin.operations.route
+                                    :title="__('Edit module')"
+                                    :href="route('admin.test-projects.modules.edit', [
+                                        'test_project' => $testProject,
+                                        'module' => $module
+                                    ])"
+                                    icon="fa-pen-to-square"
+                                />
+                                <x-admin.operations.route
+                                    :title="__('Delete module')"
+                                    :href="route('admin.test-projects.modules.delete', [
+                                        'test_project' => $testProject,
+                                        'module' => $module
+                                    ])"
+                                    icon="fa-trash"
+                                />
+                            </x-admin.operations.container>
                             <ul class="flex flex-wrap gap-4 p-4 bg-gray-100 rounded-md">
                                 @foreach ($module->attachments as $attachment)
-                                    <x-admin.test-projects.attachments.attachment
+                                    <x-admin.test-projects.attachments.module-attachment
+                                        :module="$module"
                                         :attachment="$attachment"
-                                        :small="true"
                                     />
                                 @endforeach
                             </ul>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\TestProjectAttachmentController;
 use App\Http\Controllers\Admin\TestProjectController;
 use App\Http\Controllers\Admin\TestProjectTagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\TestProjectModuleController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("/admin")
@@ -82,6 +83,18 @@ Route::prefix("/admin")
         Route::resource(
             "test-projects.attachments",
             TestProjectAttachmentController::class,
+            ["as" => "admin"]
+        );
+
+        // test project modules
+        Route::get(
+            "/test-projects/{test_project}/modules/{module}/delete",
+            [TestProjectModuleController::class, "delete"],
+        )
+            ->name("admin.test-projects.modules.delete");
+        Route::resource(
+            "test-projects.modules",
+            TestProjectModuleController::class,
             ["as" => "admin"]
         );
     });
