@@ -1,11 +1,11 @@
 <aside
     x-data="{ open: true }"
     @class([
-        "top-0 left-0 absolute w-screen xs:h-screen xs:sticky xs:max-w-52",
+        "top-0 left-0 absolute w-screen xs:h-screen xs:max-w-52",
         "flex flex-col",
         "bg-rose-700 flex gap-2 shadow-rose-950 shadow-lg"
     ])
-    x-bind:class="open ? 'h-screen' : 'rounded-md shadow-none bg-transparent'"
+    x-bind:class="open ? 'h-screen xs:sticky' : 'rounded-md shadow-none bg-transparent xs:max-w-fit'"
 >
     <nav
         x-show="open"
