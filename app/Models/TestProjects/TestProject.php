@@ -21,20 +21,28 @@ class TestProject extends Model
         "owner_id"
     ];
 
-    public function owner(): BelongsTo {
+    public function owner(): BelongsTo
+    {
         return $this->belongsTo(User::class, "owner_id");
     }
 
-    public function attachments(): HasMany {
+    public function attachments(): HasMany
+    {
         return $this->hasMany(TestProjectAttachment::class);
     }
 
-    public function tags(): BelongsToMany {
+    public function tags(): BelongsToMany
+    {
         return $this->belongsToMany(
             TestProjectTag::class,
             "test_project_test_project_tag",
             "test_project_id",
             "test_project_tag_id"
         );
+    }
+
+    public function modules()
+    {
+        return $this->hasMany(TestProjectModule::class);
     }
 }
