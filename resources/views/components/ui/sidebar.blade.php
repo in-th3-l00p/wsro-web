@@ -1,13 +1,15 @@
 <aside
     x-data="{ open: true }"
     @class([
-        "sticky top-0 left-0 h-screen",
+        "top-0 left-0 absolute w-screen xs:h-screen xs:sticky xs:max-w-52",
+        "flex flex-col",
         "bg-rose-700 flex gap-2 shadow-rose-950 shadow-lg"
     ])
+    x-bind:class="open ? 'h-screen' : 'rounded-md shadow-none bg-transparent'"
 >
     <nav
         x-show="open"
-        class="flex flex-col"
+        class="flex flex-col h-full"
         style="display: none;"
     >
         {{ $slot }}
@@ -21,7 +23,7 @@
             {{ '"' . __("Open sidebar") . '"' }}
         "
         @class([
-            "rounded-md p-4 m-2 w-12 h-12",
+            "rounded-md p-4 m-2 w-12 h-12 bg-rose-700",
             "flex justify-center items-center",
             "hover:bg-rose-500 hover:scale-105 transition-all"
         ])

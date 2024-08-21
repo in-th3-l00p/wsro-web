@@ -8,6 +8,9 @@ export default {
         extend: {
             colors: {
                 "rose-900": "#74102F"
+            },
+            screens: {
+                "xs": "480px",
             }
         },
     },
