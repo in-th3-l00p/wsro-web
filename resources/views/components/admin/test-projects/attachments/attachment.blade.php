@@ -1,4 +1,9 @@
-<div class="attachment">
+<div
+    @class([
+        "attachment" => !$small,
+        "attachment-small" => $small
+    ])
+>
     <i class="fa-solid fa-file fa-2xl icon"></i>
     <h2 class="title">{{ $attachment->name }}</h2>
     <x-admin.operations.container class="justify-center">
