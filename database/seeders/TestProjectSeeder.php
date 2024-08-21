@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\TestProjects\TestProject;
 use App\Models\TestProjects\TestProjectAttachment;
+use App\Models\TestProjects\TestProjectModule;
 use App\Models\TestProjects\TestProjectTag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,9 +20,6 @@ class TestProjectSeeder extends Seeder
         TestProject::factory(10)->create();
         TestProject::factory(5)->create([
             "visibility" => "private"
-        ]);
-        TestProject::factory(5)->create([
-            "visibility" => "draft"
         ]);
 
         // test project tagggsss
@@ -40,5 +38,22 @@ class TestProjectSeeder extends Seeder
         foreach (TestProject::all() as $testProject)
             TestProjectAttachment::factory(rand(0, 4))
                 ->create([ "test_project_id" => $testProject->id ]);
+
+        // test project modules
+        foreach (TestProject::all() as $testProject) {
+            $modules = TestProjectModule::factory(rand(1, 4))
+                ->create(["test_project_id" => $testProject->id]);
+            // attachments
+            foreach ($modules as $module) {
+                $module->attachments()->saveMany($testProject
+                    ->attachments()
+                    ->limit(rand(1, min($testProject->attachments()->count(), 3)))
+                    ->inRandomOrder()
+                    ->get()
+                );
+            }
+
+            $testProject->modules()->saveMany($modules);
+        }
     }
 }

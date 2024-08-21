@@ -2,6 +2,7 @@
 
 namespace Database\Factories\TestProjects;
 
+use App\Models\TestProjects\TestProject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +10,17 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TestProjectModuleFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'name' => "Module " . fake()->randomLetter(),
+            'description' => fake()->sentence(),
+            'test_project_id' => TestProject::query()
+                ->inRandomOrder()
+                ->first()
+                ->id,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

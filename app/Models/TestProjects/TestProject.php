@@ -41,7 +41,7 @@ class TestProject extends Model
         );
     }
 
-    public function modules()
+    public function modules(): HasMany
     {
         return $this->hasMany(TestProjectModule::class);
     }
