@@ -54,7 +54,17 @@
                 >{!! $testProject->description !!}</textarea>
             </div>
 
-            <input type="hidden" aria-hidden="true" name="visibility" value="draft">
+            <div class="form-group mb-8">
+                <label for="visibility" class="label w-32">{{ __("Visibility") }}:</label>
+                <select name="visibility" id="visibility" class="select">
+                    <option value="public" @if($testProject->visibility === "public") selected @endif>
+                        {{ __("Public") }}
+                    </option>
+                    <option value="private" @if($testProject->visibility === "private") selected @endif>
+                        {{ __("Private") }}
+                    </option>
+                </select>
+            </div>
 
             <button
                 type="submit"

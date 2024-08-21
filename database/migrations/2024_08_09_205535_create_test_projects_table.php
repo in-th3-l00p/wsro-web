@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text("description");
             $table->enum(
                 "visibility",
-                ["public", "draft", "private"]
+                ["public", "private"]
             );
 
             $table

@@ -45,7 +45,7 @@
                 >{!! old("description") !!}</textarea>
             </div>
 
-            <input type="hidden" aria-hidden="true" name="visibility" value="draft">
+            <input type="hidden" aria-hidden="true" name="visibility" value="private">
 
             <button
                 type="submit"
