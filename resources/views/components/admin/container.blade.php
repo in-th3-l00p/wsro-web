@@ -2,7 +2,7 @@
     <x-admin.sidebar />
 
     <section class="layout-header">
-        <header class="mb-8">
+        <header class="mb-16">
             @if ($breadcrumbPath)
                 <x-ui.breadcrumbs :path="$breadcrumbPath" />
             @endif
