@@ -16,7 +16,10 @@ class TestProjectModuleController extends Controller
         ]);
     }
 
-    public function store(Request $request, TestProject $testProject)
+    public function store(
+        Request $request,
+        TestProject $testProject
+    )
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
@@ -41,19 +44,19 @@ class TestProjectModuleController extends Controller
 
     public function edit(
         TestProject       $testProject,
-        TestProjectModule $testProjectModule
+        TestProjectModule $module
     )
     {
         return view('admin.test-projects.modules.edit', [
             'testProject' => $testProject,
-            'testProjectModule' => $testProjectModule,
+            'module' => $module,
         ]);
     }
 
     public function update(
         Request           $request,
         TestProject       $testProject,
-        TestProjectModule $testProjectModule
+        TestProjectModule $module
     )
     {
         $data = $request->validate([
@@ -63,13 +66,13 @@ class TestProjectModuleController extends Controller
             'attachments.*' => 'required|exists:test_project_attachments,id',
         ]);
 
-        $testProjectModule->update([
+        $module->update([
             'name' => $data['name'],
             'description' => $data['description'],
         ]);
 
         if (isset($data["attachments"]))
-            $testProjectModule
+            $module
                 ->attachments()
                 ->sync($data['attachments']);
 
@@ -80,21 +83,21 @@ class TestProjectModuleController extends Controller
 
     public function delete(
         TestProject       $testProject,
-        TestProjectModule $testProjectModule
+        TestProjectModule $module
     )
     {
         return view('admin.test-projects.modules.delete', [
             'testProject' => $testProject,
-            'testProjectModule' => $testProjectModule,
+            'module' => $module,
         ]);
     }
 
     public function destroy(
         TestProject       $testProject,
-        TestProjectModule $testProjectModule
+        TestProjectModule $module
     )
     {
-        $testProjectModule->delete();
+        $module->delete();
         return redirect()->route("admin.test-projects.show", [
             "test_project" => $testProject,
         ]);

@@ -15,7 +15,7 @@
     >
         <x-slot:subtitle>
             <x-ui.layout.subtitle>
-                {{ __("Add or create a new module") }}
+                {{ __("Create a new module") }}
             </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
