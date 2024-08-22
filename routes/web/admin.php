@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\TestProjectAttachmentController;
 use App\Http\Controllers\Admin\TestProjectController;
 use App\Http\Controllers\Admin\TestProjectTagController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\User\TestProjectModuleController;
+use App\Http\Controllers\Admin\TestProjectModuleController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("/admin")
@@ -96,5 +96,6 @@ Route::prefix("/admin")
             "test-projects.modules",
             TestProjectModuleController::class,
             ["as" => "admin"]
-        );
+        )
+            ->only([ "create", "store", "edit", "update", "destroy" ]);
     });

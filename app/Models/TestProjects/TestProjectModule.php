@@ -4,6 +4,8 @@ namespace App\Models\TestProjects;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TestProjectModule extends Model
 {
@@ -15,12 +17,12 @@ class TestProjectModule extends Model
         "test_project_id"
     ];
 
-    public function testProject()
+    public function testProject(): BelongsTo
     {
         return $this->belongsTo(TestProject::class);
     }
 
-    public function attachments()
+    public function attachments(): BelongsToMany
     {
         return $this->belongsToMany(
             TestProjectAttachment::class,
