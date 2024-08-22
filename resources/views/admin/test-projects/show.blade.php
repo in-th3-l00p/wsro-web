@@ -189,17 +189,21 @@
                                 />
                             </x-admin.operations.container>
                             <ul class="flex flex-wrap gap-4 p-4 bg-gray-100 rounded-md">
-                                @foreach ($module->attachments as $attachment)
+                                @forelse ($module->attachments as $attachment)
                                     <x-admin.test-projects.attachments.module-attachment
                                         :module="$module"
                                         :attachment="$attachment"
                                     />
-                                @endforeach
+                                @empty
+                                    <li class="empty-text w-full h-48 flex justify-center items-center">
+                                        {{ __("There are no attachments for this module") }}
+                                    </li>
+                                @endforelse
                             </ul>
                         </div>
                     </li>
                 @empty
-                    <li class="empty-text p-8">{{ __("There are no attachments to this module") }}</li>
+                    <li class="empty-text p-8">{{ __("There are no modules") }}</li>
                 @endforelse
             </ul>
         </section>
