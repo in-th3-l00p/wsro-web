@@ -3,7 +3,6 @@
 @endphp
 
 <div
-    type="button"
     @class([
         "h-96 max-w-96",
         "bg-white p-8 rounded-md shadow-md flex flex-col gap-4",
