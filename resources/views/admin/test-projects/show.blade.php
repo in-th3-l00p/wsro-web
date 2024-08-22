@@ -132,7 +132,7 @@
                 />
             </x-admin.operations.container>
             <ul role="list" class="divide-y divide-gray-100 bg-white shadow-md rounded-md">
-                @foreach($testProject->modules as $module)
+                @forelse($testProject->modules as $module)
                     <li x-data="{ open: false }" class="py-4 px-8 flex flex-col gap-4">
                         <div
                             class="relative flex justify-between gap-x-6"
@@ -189,16 +189,22 @@
                                 />
                             </x-admin.operations.container>
                             <ul class="flex flex-wrap gap-4 p-4 bg-gray-100 rounded-md">
-                                @foreach ($module->attachments as $attachment)
+                                @forelse ($module->attachments as $attachment)
                                     <x-admin.test-projects.attachments.module-attachment
                                         :module="$module"
                                         :attachment="$attachment"
                                     />
-                                @endforeach
+                                @empty
+                                    <li class="empty-text w-full h-48 flex justify-center items-center">
+                                        {{ __("There are no attachments for this module") }}
+                                    </li>
+                                @endforelse
                             </ul>
                         </div>
                     </li>
-                @endforeach
+                @empty
+                    <li class="empty-text p-8">{{ __("There are no modules") }}</li>
+                @endforelse
             </ul>
         </section>
 

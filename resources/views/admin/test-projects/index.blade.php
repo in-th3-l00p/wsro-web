@@ -14,7 +14,7 @@
             </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
-        <div @class(["max-w-fit" => $testProjects->count() > 0])>
+        <div>
             <x-admin.operations.container class="mb-4">
                 <x-admin.operations.route
                     :title="__('Create test project')"
