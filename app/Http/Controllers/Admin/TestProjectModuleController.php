@@ -21,7 +21,7 @@ class TestProjectModuleController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
-            'attachments' => 'required|array',
+            'attachments' => 'nullable|array',
             'attachments.*' => 'required|exists:test_project_attachments,id',
         ]);
 
@@ -30,9 +30,10 @@ class TestProjectModuleController extends Controller
             'description' => $data['description'],
             'test_project_id' => $testProject->id,
         ]);
-        $module
-            ->attachments()
-            ->sync($data['attachments']);
+        if (isset($data["attachments"]))
+            $module
+                ->attachments()
+                ->sync($data['attachments']);
         return redirect()->route('admin.test-projects.show', [
             'test_project' => $testProject,
         ]);
@@ -58,7 +59,7 @@ class TestProjectModuleController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
-            'attachments' => 'required|array',
+            'attachments' => 'nullable|array',
             'attachments.*' => 'required|exists:test_project_attachments,id',
         ]);
 
@@ -67,9 +68,10 @@ class TestProjectModuleController extends Controller
             'description' => $data['description'],
         ]);
 
-        $testProjectModule
-            ->attachments()
-            ->sync($data['attachments']);
+        if (isset($data["attachments"]))
+            $testProjectModule
+                ->attachments()
+                ->sync($data['attachments']);
 
         return redirect()->route('admin.test-projects.show', [
             'test_project' => $testProject,
