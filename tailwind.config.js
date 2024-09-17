@@ -11,6 +11,10 @@ export default {
             },
             screens: {
                 "xs": "480px",
+            },
+            transitionProperty: {
+                "width": "width",
+                "height": "height",
             }
         },
     },
