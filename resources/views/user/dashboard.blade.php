@@ -5,7 +5,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-user.layout
+    <x-layout
         :title="__('Hello') . ', ' . request()->user()->name . '!'"
         :breadcrumbPath="[
             [ 'name' => __('Dashboard') ],
@@ -78,5 +78,5 @@
                 icon="fa-user"
             />
         </div>
-    </x-user.layout>
+    </x-layout>
 @endsection

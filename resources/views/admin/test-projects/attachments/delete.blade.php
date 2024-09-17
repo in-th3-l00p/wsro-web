@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Delete attachment') . ' \'\'' . $attachment->name . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -47,5 +47,5 @@
                 </a>
             </div>
         </form>
-    </x-admin.container>
+    </x-layout>
 @endsection

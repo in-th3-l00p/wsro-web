@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Tag') . ' \'\'' . $tag->name . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -66,5 +66,5 @@
                 </div>
             @endforelse
         </section>
-    </x-admin.container>
+    </x-layout>
 @endsection

@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('User') . ' ' . $user->name"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -33,5 +33,5 @@
 
             <x-admin.users.delete-button :user="$user" />
         </div>
-    </x-admin.container>
+    </x-layout>
 @endsection

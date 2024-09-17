@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Test projects')"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -25,5 +25,5 @@
             :testProject="$testProject"
             :attachments="$attachments"
         />
-    </x-admin.container>
+    </x-layout>
 @endsection

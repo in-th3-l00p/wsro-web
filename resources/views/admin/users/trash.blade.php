@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Deleted users')"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -82,5 +82,5 @@
                 {{ __("No deleted users found.") }}
             </p>
         @endif
-    </x-admin.container>
+    </x-layout>
 @endsection

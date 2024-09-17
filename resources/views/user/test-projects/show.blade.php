@@ -5,7 +5,7 @@
 @endpush
 
 @section("content")
-    <x-user.layout
+    <x-layout
         :title="__('Test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('user.dashboard'), 'name' => __('Dashboard') ],
@@ -154,5 +154,5 @@
                 @endforelse
             </div>
         </section>
-    </x-user.layout>
+    </x-layout>
 @endsection
