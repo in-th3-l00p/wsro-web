@@ -67,7 +67,7 @@
             <x-ui.dashboard.quick-access
                 :title="__('Test projects')"
                 :description="__('Access all test projects')"
-                :href="route('user.test-projects.index')"
+                :href="route('admin.test-projects.index')"
                 icon="fa-chart-line"
             />
 

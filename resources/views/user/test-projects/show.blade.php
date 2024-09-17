@@ -150,7 +150,7 @@
                         </div>
                     </div>
                 @empty
-                    <p class="empty-text">{{ __("There are no attachments") }}</p>
+                    <p class="empty-text mx-auto">{{ __("There are no attachments") }}</p>
                 @endforelse
             </div>
         </section>
