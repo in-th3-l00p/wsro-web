@@ -17,11 +17,13 @@ return new class extends Migration
             $table->id();
 
             $table->foreignIdFor(TestProjectModule::class)
-                ->constrained("test_project_modules")
+                ->constrained("test_project_modules", "id", "id")
                 ->onDelete('cascade');
 
             $table->foreignIdFor(TestProjectAttachment::class)
-                ->constrained("test_project_attachments")
+                ->constrained()
+                ->on('test_project_attachments')
+                ->name('fk_test_project_id')
                 ->onDelete('cascade');
         });
     }
