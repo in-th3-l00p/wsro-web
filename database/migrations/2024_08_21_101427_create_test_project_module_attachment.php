@@ -20,10 +20,9 @@ return new class extends Migration
                 ->constrained("test_project_modules", "id", "id")
                 ->onDelete('cascade');
 
-            $table->foreignIdFor(TestProjectAttachment::class)
-                ->constrained()
-                ->on('test_project_attachments')
-                ->name('fk_test_project_id')
+            $table->foreignId('test_project_attachment_id')
+                ->constrained('test_project_attachments')
+                ->name('fk_test_project_attachment_id')
                 ->onDelete('cascade');
         });
     }
