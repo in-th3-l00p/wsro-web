@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User\TestProject;
+namespace App\Http\Controllers\User\TestProjects;
 
 use App\Http\Controllers\Controller;
 use App\Models\TestProjects\TestProjectTag;

@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\User\TestProject\TestProjectAttachmentController;
-use App\Http\Controllers\User\TestProject\TestProjectController;
-use App\Http\Controllers\User\TestProject\TestProjectTagController;
+use App\Http\Controllers\User\TestProjects\TestProjectAttachmentController;
+use App\Http\Controllers\User\TestProjects\TestProjectController;
+use App\Http\Controllers\User\TestProjects\TestProjectTagController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
