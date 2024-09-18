@@ -13,6 +13,9 @@
             <x-ui.layout.subtitle class="mb-4">
                 {!! $testProject->description !!}
             </x-ui.layout.subtitle>
+            @if ($testProject->visibility === "private")
+                <p class="font-semibold mb-4">{{ __("Private") }}</p>
+            @endif
 
             <x-admin.operations.container>
                 <x-admin.operations.container>
