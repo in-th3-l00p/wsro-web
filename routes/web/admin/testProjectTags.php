@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\Admin\TestProject\TestProjectTagController;
+use App\Http\Controllers\Admin\TestProjects\TestProjectTagController;
 use Illuminate\Support\Facades\Route;
 
 Route::delete(

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\TestProject\TestProjectAttachmentController;
+use App\Http\Controllers\Admin\TestProjects\TestProjectAttachmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("/test-projects/{test_project}")->group(function () {

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\TestProject\TestProjectController;
+use App\Http\Controllers\Admin\TestProjects\TestProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/test-projects/delete/{test_project}", [TestProjectController::class, "delete"])

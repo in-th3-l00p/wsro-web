@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\TestProject\TestProjectModuleController;
+use App\Http\Controllers\Admin\TestProjects\TestProjectModuleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get(

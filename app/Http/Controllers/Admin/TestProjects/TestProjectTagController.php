@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\TestProject;
+namespace App\Http\Controllers\Admin\TestProjects;
 
 use App\Http\Controllers\Controller;
 use App\Models\TestProjects\TestProject;
