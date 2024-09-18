@@ -13,6 +13,11 @@ class AssignmentPolicy
         return true;
     }
 
+    public function viewTrashed(User $user): bool
+    {
+        return $user->role === "admin";
+    }
+
     public function view(User $user, Assignment $assignment): bool
     {
         return
@@ -37,17 +42,16 @@ class AssignmentPolicy
 
     public function restore(User $user, Assignment $assignment)
     {
-        if (!$assignment->deleted_at)
+        if (!$assignment->deleted_at) {
             return Response::denyAsNotFound();
+        }
         return $user->role === "admin" ?
             Response::allow() :
             Response::deny();
     }
 
-    public function forceDelete(
-        User $user,
-        Assignment $assignment
-    ): bool {
+    public function forceDelete(User $user, Assignment $assignment): bool
+    {
         return false;
     }
 }

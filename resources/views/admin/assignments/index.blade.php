@@ -23,7 +23,7 @@
                 />
                 <x-admin.operations.route
                     :title="__('Assignments trash')"
-                    :href="route('admin.test-projects.trash')"
+                    :href="route('admin.assignments.trash')"
                     icon="fa-trash"
                 />
             </x-admin.operations.container>
