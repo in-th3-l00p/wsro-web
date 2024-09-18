@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\TestProjectAttachmentController;
-use App\Http\Controllers\Admin\TestProjectController;
-use App\Http\Controllers\Admin\TestProjectTagController;
+use App\Http\Controllers\Admin\TestProject\TestProjectAttachmentController;
+use App\Http\Controllers\Admin\TestProject\TestProjectController;
+use App\Http\Controllers\Admin\TestProject\TestProjectModuleController;
+use App\Http\Controllers\Admin\TestProject\TestProjectTagController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\TestProjectModuleController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("/admin")
