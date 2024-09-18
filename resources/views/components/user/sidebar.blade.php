@@ -10,7 +10,7 @@
 
     <x-ui.sidebar.link
         route="user.test-projects.index"
-        icon="fa-file"
+        icon="fa-book"
     >
         {{ __("Test projects") }}
     </x-ui.sidebar.link>

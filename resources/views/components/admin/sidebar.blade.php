@@ -17,10 +17,19 @@
 
     <x-ui.sidebar.link
         route="admin.test-projects.index"
-        icon="fa-file"
+        icon="fa-book"
     >
         {{ __("Test projects") }}
     </x-ui.sidebar.link>
+
+    <!-- assignments route -->
+    <x-ui.sidebar.link
+        route="admin.assignments.index"
+        icon="fa-file"
+    >
+        {{ __("Assignments") }}
+    </x-ui.sidebar.link>
+
 
     <x-ui.sidebar.user />
 </x-ui.sidebar>
