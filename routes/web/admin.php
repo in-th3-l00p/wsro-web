@@ -10,8 +10,8 @@ Route::prefix("/admin")
             ->name("admin.dashboard");
 
         require "admin/users.php";
-        require "admin/testProjects.php";
-        require "admin/testProjectTags.php";
-        require "admin/testProjectAttachments.php";
-        require "admin/testProjectModules.php";
+        require "admin/testProjects/testProjects.php";
+        require "admin/testProjects/testProjectTags.php";
+        require "admin/testProjects/testProjectAttachments.php";
+        require "admin/testProjects/testProjectModules.php";
     });
