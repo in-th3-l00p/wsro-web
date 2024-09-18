@@ -17,3 +17,4 @@ Route::resource(
 );
 
 require "assignmentSubmissions.php";
+require "assignmentAttachments.php";

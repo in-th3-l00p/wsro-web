@@ -16,7 +16,7 @@ Route::get(
     ->name('admin.assignments.submissions.trash');
 
 Route::put(
-    '/assignments/{assignment}/submissions/restore/{id}',
+    '/assignments/{assignment}/submissions/restore/{submission}',
     [AssignmentSubmissionController::class, 'restore']
 )
     ->withTrashed()

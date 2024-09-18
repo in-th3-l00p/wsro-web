@@ -87,8 +87,12 @@ class AssignmentSubmissionPolicy
             );
         }
 
-        return $user->role === "admin" ||
-            $user->id === $assignment->owner_id;
+        return
+            $submission->deleted_at !== null &&
+            (
+                $user->role === "admin" ||
+                $user->id === $assignment->owner_id
+            );
     }
 
     public function forceDelete(
