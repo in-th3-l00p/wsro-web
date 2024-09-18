@@ -8,7 +8,7 @@
         @click="open = !open"
     >
         <i class="fa-solid fa-2xl fa-user text-white"></i>
-        <div>{{ request()->user()->name }}</div>
+        {{ request()->user()->name }}
     </button>
     <nav x-show="open">
         <x-ui.sidebar.link
