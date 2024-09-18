@@ -197,7 +197,7 @@ class AssignmentAttachmentController extends Controller
 
     public function trash(Assignment $assignment)
     {
-        Gate::authorize('viewAny', AssignmentAttachment::class);
+        Gate::authorize('viewTrashed', AssignmentAttachment::class);
 
         $attachments = AssignmentAttachment::onlyTrashed()
             ->where('assignment_id', $assignment->id)

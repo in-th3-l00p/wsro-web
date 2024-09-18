@@ -17,7 +17,11 @@ class AssignmentAttachmentPolicy
     ) {
         return
             $user->role === 'admin' ||
-            $user->id === $assignment->owner_id;
+            $user->id === $assignment->owner_id ||
+            $assignment
+                ->users()
+                ->where('users.id', $user->id)
+                ->exists();
     }
 
     public function view(
@@ -38,6 +42,11 @@ class AssignmentAttachmentPolicy
                 ->where('users.id', $user->id)
                 ->exists();
     }
+
+    public function viewTrashed(User $user) {
+        return $user->role === 'admin';
+    }
+
 
     public function create(
         User $user,
