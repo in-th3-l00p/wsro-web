@@ -11,8 +11,5 @@ Route::prefix("/admin")
 
         require "admin/users.php";
         require "admin/testProjects/testProjects.php";
-        require "admin/testProjects/testProjectTags.php";
-        require "admin/testProjects/testProjectAttachments.php";
-        require "admin/testProjects/testProjectModules.php";
         require "admin/assignments/assignments.php";
     });

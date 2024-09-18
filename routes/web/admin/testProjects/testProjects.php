@@ -15,3 +15,7 @@ Route::resource(
     TestProjectController::class,
     ["as" => "admin"]
 );
+
+require "testProjectTags.php";
+require "testProjectAttachments.php";
+require "testProjectModules.php";

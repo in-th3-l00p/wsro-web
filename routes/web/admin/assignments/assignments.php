@@ -15,3 +15,5 @@ Route::resource(
     AssignmentController::class,
     ["as" => "admin"]
 );
+
+require "assignmentSubmissions.php";
