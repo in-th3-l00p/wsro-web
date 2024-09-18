@@ -13,7 +13,9 @@ class AssignmentController extends Controller
     {
         Gate::authorize("viewAny", Assignment::class);
         return view("admin.assignments.index", [
-            "assignments" => Assignment::query()->latest()->get()
+            "assignments" => Assignment::query()
+                ->orderBy("deadline")
+                ->paginate()
         ]);
     }
 

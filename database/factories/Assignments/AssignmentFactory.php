@@ -20,7 +20,7 @@ class AssignmentFactory extends Factory
         return [
             "name" => fake()->sentence(4),
             "description" => fake()->paragraph(),
-            "deadline" => now(),
+            "deadline" => fake()->dateTimeBetween("now", "+1 month"),
             "owner_id" => User::query()->inRandomOrder()->first()->id,
             "created_at" => now(),
             "updated_at" => now()
