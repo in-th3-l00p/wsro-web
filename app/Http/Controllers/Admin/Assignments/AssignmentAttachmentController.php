@@ -16,7 +16,7 @@ class AssignmentAttachmentController extends Controller
     {
         Gate::authorize(
             'viewAny',
-            AssignmentAttachment::class
+            [AssignmentAttachment::class, $assignment],
         );
 
         return view('admin.assignments.attachments.index', [

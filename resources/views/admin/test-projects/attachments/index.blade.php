@@ -21,9 +21,16 @@
             </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
-        <x-admin.test-projects.attachments.attachment-list
+        <x-ui.attachments.attachment-list
+            baseRoute="admin.test-projects"
+            entityName="test_project"
+            :entity="$testProject"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :admin="true"
             :testProject="$testProject"
-            :attachments="$attachments"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :includeTitle="true"
+            :includeIndex="true"
         />
     </x-layout>
 @endsection

@@ -193,7 +193,7 @@
                             </x-admin.operations.container>
                             <ul class="flex flex-wrap gap-4 p-4 bg-gray-100 rounded-md">
                                 @forelse ($module->attachments as $attachment)
-                                    <x-admin.test-projects.attachments.module-attachment
+                                    <x-admin.test-projects.module-attachment
                                         :module="$module"
                                         :attachment="$attachment"
                                     />
@@ -211,7 +211,12 @@
             </ul>
         </section>
 
-        <x-admin.test-projects.attachments.attachment-list
+        <x-ui.attachments.attachment-list
+            baseRoute="admin.test-projects"
+            entityName="test_project"
+            :entity="$testProject"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :admin="true"
             :testProject="$testProject"
             :attachments="$testProject->attachments()->latest()->get()"
             :includeTitle="true"

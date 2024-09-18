@@ -25,5 +25,5 @@ Route::put(
 Route::resource(
     'assignments.attachments',
     AssignmentAttachmentController::class,
-    ['as' => 'admin.assignments']
+    ['as' => 'admin']
 );

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Admin\TestProjects\Attachments;
+namespace App\View\Components\Admin\TestProjects;
 
 use App\Models\TestProjects\TestProjectAttachment;
 use App\Models\TestProjects\TestProjectModule;
@@ -25,6 +25,6 @@ class ModuleAttachment extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.test-projects.attachments.module-attachment');
+        return view('components.admin.test-projects.module-attachment');
     }
 }
