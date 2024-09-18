@@ -72,6 +72,13 @@
             />
 
             <x-ui.dashboard.quick-access
+                :title="__('Assignments')"
+                :description="__('Manage all assignments')"
+                :href="route('admin.assignments.index')"
+                icon="fa-file"
+            />
+
+            <x-ui.dashboard.quick-access
                 :title="__('Users')"
                 :description="__('Access the platform\'s users')"
                 :href="route('admin.users.index')"
