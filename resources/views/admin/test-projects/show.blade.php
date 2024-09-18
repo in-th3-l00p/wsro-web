@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -13,6 +13,9 @@
             <x-ui.layout.subtitle class="mb-4">
                 {!! $testProject->description !!}
             </x-ui.layout.subtitle>
+            @if ($testProject->visibility === "private")
+                <p class="font-semibold mb-4">{{ __("Private") }}</p>
+            @endif
 
             <x-admin.operations.container>
                 <x-admin.operations.container>
@@ -190,7 +193,7 @@
                             </x-admin.operations.container>
                             <ul class="flex flex-wrap gap-4 p-4 bg-gray-100 rounded-md">
                                 @forelse ($module->attachments as $attachment)
-                                    <x-admin.test-projects.attachments.module-attachment
+                                    <x-admin.test-projects.module-attachment
                                         :module="$module"
                                         :attachment="$attachment"
                                     />
@@ -208,11 +211,16 @@
             </ul>
         </section>
 
-        <x-admin.test-projects.attachments.attachment-list
+        <x-ui.attachments.attachment-list
+            baseRoute="admin.test-projects"
+            entityName="test_project"
+            :entity="$testProject"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :admin="true"
             :testProject="$testProject"
             :attachments="$testProject->attachments()->latest()->get()"
             :includeTitle="true"
             :includeIndex="true"
         />
-    </x-admin.container>
+    </x-layout>
 @endsection

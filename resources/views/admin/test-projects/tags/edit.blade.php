@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Edit tag') . ' \'\'' . $tag->name . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -54,5 +54,5 @@
                 {{ __("Add") }}
             </button>
         </form>
-    </x-admin.container>
+    </x-layout>
 @endsection

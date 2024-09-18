@@ -1,5 +1,9 @@
 <main class="flex">
-    <x-admin.sidebar />
+    @if (request()->user()->role === 'admin')
+        <x-admin.sidebar />
+    @else
+        <x-user.sidebar />
+    @endif
 
     <section class="layout-header">
         <header class="mb-16">

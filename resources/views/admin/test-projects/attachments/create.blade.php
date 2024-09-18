@@ -5,7 +5,7 @@
 @endpush
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Add attachment')"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -76,5 +76,5 @@
                 {{ __("Upload") }}
             </button>
         </form>
-    </x-admin.container>
+    </x-layout>
 @endsection

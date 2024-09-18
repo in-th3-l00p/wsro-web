@@ -5,7 +5,7 @@
 @endpush
 
 @section("content")
-    <x-user.layout
+    <x-layout
         :title="__('Test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('user.dashboard'), 'name' => __('Dashboard') ],
@@ -128,31 +128,15 @@
             </ul>
         </section>
 
-        <section>
-            <h2 class="section-title">{{ __("Attachments") }}</h2>
-
-            <div class="flex flex-wrap gap-8">
-                @forelse ($testProject->attachments()->get() as $attachment)
-                    <div class="attachment">
-                        <i class="fa-solid fa-file fa-2xl icon"></i>
-                        <h2 class="title">{{ $attachment->name }}</h2>
-                        <div class="btn-group justify-center">
-                            <a
-                                title="{{ __('Download') }}"
-                                href="{{ route('user.test-projects.attachments.show', [
-                                    'test_project' => $attachment->test_project_id,
-                                    'attachment' => $attachment
-                                ]) }}"
-                                class="icon-btn"
-                            >
-                                <i class="fa-solid fa-download"></i>
-                            </a>
-                        </div>
-                    </div>
-                @empty
-                    <p class="empty-text">{{ __("There are no attachments") }}</p>
-                @endforelse
-            </div>
-        </section>
-    </x-user.layout>
+        <x-ui.attachments.attachment-list
+            baseRoute="user.test-projects"
+            entityName="test_project"
+            :entity="$testProject"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :testProject="$testProject"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :includeTitle="true"
+            :includeIndex="true"
+        />
+    </x-layout>
 @endsection

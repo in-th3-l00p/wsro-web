@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Test projects')"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -21,9 +21,16 @@
             </x-ui.layout.subtitle>
         </x-slot:subtitle>
 
-        <x-admin.test-projects.attachments.attachment-list
+        <x-ui.attachments.attachment-list
+            baseRoute="admin.test-projects"
+            entityName="test_project"
+            :entity="$testProject"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :admin="true"
             :testProject="$testProject"
-            :attachments="$attachments"
+            :attachments="$testProject->attachments()->latest()->get()"
+            :includeTitle="true"
+            :includeIndex="true"
         />
-    </x-admin.container>
+    </x-layout>
 @endsection

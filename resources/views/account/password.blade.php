@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-user.layout
+    <x-layout
         :title="__('Change password')"
         :breadcrumbPath="[
             [ 'href' => route(request()->user()->role . '.dashboard'), 'name' => __('Dashboard') ],
@@ -63,5 +63,5 @@
                 {{ __("Update") }}
             </button>
         </form>
-    </x-user.layout>
+    </x-layout>
 @endsection

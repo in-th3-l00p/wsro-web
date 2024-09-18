@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-user.layout
+    <x-layout
         :title="__('Test projects')"
         :breadcrumbPath="[
             [ 'href' => route('user.dashboard'), 'name' => __('Dashboard') ],
@@ -31,5 +31,5 @@
 
             {{ $testProjects->links() }}
         </div>
-    </x-user.layout>
+    </x-layout>
 @endsection

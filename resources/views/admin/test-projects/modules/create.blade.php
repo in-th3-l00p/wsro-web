@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Create module')"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -78,5 +78,5 @@
                 {{ __("Create") }}
             </button>
         </form>
-    </x-admin.container>
+    </x-layout>
 @endsection

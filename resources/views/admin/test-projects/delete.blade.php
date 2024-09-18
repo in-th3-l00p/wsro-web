@@ -1,7 +1,7 @@
 @extends("layouts.main")
 
 @section("content")
-    <x-admin.container
+    <x-layout
         :title="__('Delete test project') . ' \'\'' . $testProject->title . '\'\''"
         :breadcrumbPath="[
             [ 'href' => route('admin.dashboard'), 'name' => __('Dashboard') ],
@@ -40,5 +40,5 @@
                 </a>
             </div>
         </form>
-    </x-admin.container>
+    </x-layout>
 @endsection
