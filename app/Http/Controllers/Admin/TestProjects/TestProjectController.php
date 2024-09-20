@@ -92,7 +92,7 @@ class TestProjectController extends Controller
         $testProject->delete();
         return redirect()
             ->route("admin.test-projects.index")
-            ->with([ "success" => "Test project deleted!" ]);
+            ->with([ "success" => __("Test project deleted!") ]);
     }
 
     public function trash() {
@@ -106,8 +106,10 @@ class TestProjectController extends Controller
     public function restore(TestProject $testProject) {
         Gate::authorize("restore", $testProject);
         $testProject->restore();
-        return redirect()->route("admin.test-projects.show", [
-            "test_project" => $testProject
-        ]);
+        return redirect()
+            ->route("admin.test-projects.show", [
+                "test_project" => $testProject
+            ])
+    ->with([ "success" => __("Test project restored!") ]);
     }
 }
